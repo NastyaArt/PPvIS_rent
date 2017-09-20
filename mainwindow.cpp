@@ -11,9 +11,13 @@ MainWindow::MainWindow(QWidget *parent) :
     for (int i = 0; i < toolbars.length(); i++)
         toolbars.at(i)->hide();
 
+
+
     group = new QGroupBox();
 
-    lblName = new QLabel("Прокат настольных игр");
+    lblName = new QLabel();
+    lblName->setPixmap(QPixmap("images/head.png"));
+    lblName->setAlignment(Qt::AlignCenter);
 
     butCat = new QPushButton();
     butCat ->setFixedSize(120,30);
@@ -75,6 +79,7 @@ MainWindow::MainWindow(QWidget *parent) :
     layAll->addLayout(layTop);
 
     group->setLayout(layAll);
+//    setStyleSheet("background-image: url(images/bg.jpg) none;");
 
     setCentralWidget(group);
 }

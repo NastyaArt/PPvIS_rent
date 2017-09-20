@@ -9,6 +9,7 @@
 #include <QHBoxLayout>
 #include <QGroupBox>
 #include <QStringList>
+#include <QDesktopWidget>
 
 
 namespace Ui {
