@@ -12,11 +12,10 @@ int main(int argc, char *argv[])
     int height = rect.height();
     int width = rect.width();
     QPixmap bg("images/bg.jpg");
-   // bg.scaled(32, 32, Qt::IgnoreAspectRatio, Qt::FastTransformation);
     p.setBrush(QPalette::Background, bg.scaled(width, height, Qt::IgnoreAspectRatio, Qt::FastTransformation));
     w.setPalette(p);
-  //  w.setFixedWidth(width);
-   // w.setFixedHeight(height);
+
+    w.setMinimumSize(800, 600);
 
     w.setWindowIcon(QIcon("images/ico.png"));
     w.showMaximized();

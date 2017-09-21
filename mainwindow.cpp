@@ -79,7 +79,6 @@ MainWindow::MainWindow(QWidget *parent) :
     layAll->addLayout(layTop);
 
     group->setLayout(layAll);
-//    setStyleSheet("background-image: url(images/bg.jpg) none;");
 
     setCentralWidget(group);
 }
