@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    product.cpp
+    product.cpp \
+    databaseproduct.cpp
 
 HEADERS  += mainwindow.h \
-    product.h
+    product.h \
+    databaseproduct.h
 
 FORMS    += mainwindow.ui
