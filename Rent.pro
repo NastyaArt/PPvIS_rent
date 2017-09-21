@@ -15,10 +15,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     product.cpp \
-    databaseproduct.cpp
+    databaseproduct.cpp \
+    productcard.cpp \
+    catalogwidget.cpp
 
 HEADERS  += mainwindow.h \
     product.h \
-    databaseproduct.h
+    databaseproduct.h \
+    productcard.h \
+    catalogwidget.h
 
 FORMS    += mainwindow.ui

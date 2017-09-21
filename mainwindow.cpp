@@ -39,19 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     butBask ->setFixedSize(120,30);
     butBask ->setText("Корзина");
 
-    lblCatalog = new QLabel();
-    lblCatalog->setFixedSize(700, 700);
-
-    listCat << "Стратегические игры" << "Игры для вечеринок" << "Игры для детей" << "Развивающие игры" << "Тематические игры" << "Другое";
-    rbutCat = new QList<QRadioButton*>;
-    btGrCat = new QButtonGroup;
-
-    for (int i = 0; i < listCat.length(); i++) {
-        QRadioButton* rbut = new QRadioButton(listCat.at(i));
-        rbutCat->append(rbut);
-        btGrCat->addButton(rbutCat->at(i));
-    }
-
+    catalog = new CatalogWidget;
 
     QHBoxLayout *layBut = new QHBoxLayout;
     layBut->addWidget(butCat);
@@ -60,23 +48,13 @@ MainWindow::MainWindow(QWidget *parent) :
     layBut->addWidget(butStat);
     layBut->addWidget(butBask);
 
-
     QVBoxLayout *layHead = new QVBoxLayout;
     layHead->addWidget(lblName);
     layHead->addLayout(layBut);
 
-    QVBoxLayout *layCat = new QVBoxLayout;
-    for (int i = 0; i < rbutCat->length(); i++) {
-        layCat->addWidget(rbutCat->at(i));
-    }
-
-    QHBoxLayout *layTop = new QHBoxLayout;
-    layTop->addLayout(layCat);
-    layTop->addWidget(lblCatalog);
-
     QVBoxLayout *layAll = new QVBoxLayout;
     layAll->addLayout(layHead);
-    layAll->addLayout(layTop);
+    layAll->addWidget(catalog);
 
     group->setLayout(layAll);
 

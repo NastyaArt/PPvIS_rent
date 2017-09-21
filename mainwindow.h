@@ -4,12 +4,12 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QPushButton>
-#include <QRadioButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGroupBox>
 #include <QStringList>
 #include <QDesktopWidget>
+#include "catalogwidget.h"
 
 
 namespace Ui {
@@ -31,10 +31,7 @@ private:
 
     QLabel *lblName;
 
-    QLabel *lblCatalog;
-
-    QStringList listCat;
-    QButtonGroup *btGrCat;
+    CatalogWidget *catalog;
 
     QPushButton *butCat;
     QPushButton *butInf;
@@ -42,7 +39,6 @@ private:
     QPushButton *butStat;
     QPushButton *butBask;
 
-    QList<QRadioButton*> *rbutCat;
 };
 
 #endif // MAINWINDOW_H
