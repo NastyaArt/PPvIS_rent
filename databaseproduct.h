@@ -17,7 +17,7 @@ public:
 private:
 
     QList<Product> database;
-    void AddProduct(int art, QString name, QString categ, bool avail, int rub, int pen);
+    void AddProduct(QString art, QString name, QString categ, bool avail, int rub, int pen);
   //  QString filename=("database.xml");
 
 signals:

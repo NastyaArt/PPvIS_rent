@@ -6,9 +6,9 @@
 class Product
 {
 public:
-    Product(int art, QString nm, QString cat, bool avlbl, int rub, int pen);
+    Product(QString art, QString nm, QString cat, bool avlbl, int rub, int pen);
 
-    int GetArticle();
+    QString GetArticle();
     QString GetName();
     QString GetCategory();
     bool GetAvailable();
@@ -16,7 +16,7 @@ public:
     int GetPennies();
 
 private:
-    int article;
+    QString article;
     QString name;
     QString category;
     bool available;

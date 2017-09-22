@@ -1,6 +1,6 @@
 #include "product.h"
 
-Product::Product(int art, QString nm, QString cat, bool avlbl, int rub, int pen)
+Product::Product(QString art, QString nm, QString cat, bool avlbl, int rub, int pen)
 {
     article = art;
     name = nm;
@@ -10,7 +10,7 @@ Product::Product(int art, QString nm, QString cat, bool avlbl, int rub, int pen)
     pennies = pen;
 }
 
-int Product::GetArticle()
+QString Product::GetArticle()
 {
     return article;
 }

@@ -1,20 +1,27 @@
 #include "catalogwidget.h"
 
-CatalogWidget::CatalogWidget(/*QList<Product> database*/)
+CatalogWidget::CatalogWidget(/*QList<Product> database*/) //формировать карточки не в конструкторе, а функцией
 {
 
 
+    cardsBox = new QGroupBox;
+    cardsBox->setFixedSize(1100, 700);  //5*(размер одной карточки + немного) - ширина, а по высоте сделать прокрутку
+    cardsBox->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
+
     // создание каталога карточек и расположение их в боксе
-    lblCatalog = new QLabel();
-    lblCatalog->setFixedSize(1100, 700);  //5*(размер одной карточки + немного) - ширина, а по высоте сделать прокрутку
-    lblCatalog->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
 
   /*  QRect rect = QApplication::desktop()->screenGeometry();
     int height = rect.height();
     int width = rect.width();
     setFixedSize(width-50, heidht-100);
 */
+    Product prd1("00001", "Настолка", "Категория", 1, 19, 99);
+    ProductCard *prd1Card = new ProductCard(prd1);
 
+    QVBoxLayout *layPr = new QVBoxLayout;
+    layPr->addWidget(prd1Card);
+    layPr->setAlignment(Qt::AlignTop);
+    cardsBox->setLayout(layPr);
 
     setFixedHeight(700);
     listCateg << "Стратегические игры" << "Игры для вечеринок"
@@ -46,7 +53,7 @@ CatalogWidget::CatalogWidget(/*QList<Product> database*/)
     QHBoxLayout *layTop = new QHBoxLayout;
     layTop->addWidget(boxCat);
   //  layTop->addLayout(layCateg);
-    layTop->addWidget(lblCatalog);  //- добавить бокс карточек
+    layTop->addWidget(cardsBox);  //- добавить бокс карточек
 
     setLayout(layTop);
 }

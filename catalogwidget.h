@@ -16,7 +16,7 @@ public:
 
 private:
 
-    QLabel *lblCatalog;
+    QGroupBox *cardsBox;
     QStringList listCateg;
     QButtonGroup *btGrCateg;
 

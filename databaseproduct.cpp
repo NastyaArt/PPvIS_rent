@@ -5,7 +5,7 @@ DatabaseProduct::DatabaseProduct()
 
 }
 
-void DatabaseProduct::AddProduct(int art, QString name, QString categ, bool avail, int rub, int pen)
+void DatabaseProduct::AddProduct(QString art, QString name, QString categ, bool avail, int rub, int pen)
 {
 	Product prd(art, name, categ, avail, rub, pen);
     database.append(prd);
@@ -16,7 +16,7 @@ void DatabaseProduct::GetDatabase()
     bool ok = true;
     bool intOk = true;
 	
-    int art;
+    QString art;
     QString name;
     QString categ;
     bool avail;
@@ -40,7 +40,7 @@ void DatabaseProduct::GetDatabase()
 			    if (xmlReader.name() == "products")
 					xmlReader.readNext();
                 if (xmlReader.name() == "product"){
-                    art = 0;
+                    art = ("");
                     name = ("");
                     categ = ("");
                     avail = 0;
@@ -49,7 +49,7 @@ void DatabaseProduct::GetDatabase()
 					xmlReader.readNext();
                 }
                 if (xmlReader.name() == "article"){
-                    art=xmlReader.readElementText().toInt(&intOk, 10);
+                    art=xmlReader.readElementText();
 					xmlReader.readNext();
 				}
                 if (xmlReader.name() == "name"){

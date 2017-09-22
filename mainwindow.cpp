@@ -53,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     group->setLayout(layAll);
 
+
     setCentralWidget(group);
 }
 
