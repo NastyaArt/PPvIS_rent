@@ -19,25 +19,20 @@ MainWindow::MainWindow(QWidget *parent) :
     lblName->setPixmap(QPixmap("images/head.png"));
     lblName->setAlignment(Qt::AlignCenter);
 
-    butCat = new QPushButton();
+    butCat = new QPushButton("Категории");
     butCat ->setFixedSize(120,30);
-    butCat ->setText("Категории");
 
-    butInf = new QPushButton();
+    butInf = new QPushButton("Оплата и доставка");
     butInf ->setFixedSize(120,30);
-    butInf ->setText("Оплата и доставка");
 
-    butCont = new QPushButton();
+    butCont = new QPushButton("Контакты");
     butCont ->setFixedSize(120,30);
-    butCont ->setText("Контакты");
 
-    butStat = new QPushButton();
+    butStat = new QPushButton("Статус заказов");
     butStat ->setFixedSize(120,30);
-    butStat ->setText("Статус заказов");
 
-    butBask = new QPushButton();
+    butBask = new QPushButton("Корзина");
     butBask ->setFixedSize(120,30);
-    butBask ->setText("Корзина");
 
     catalog = new CatalogWidget;
 

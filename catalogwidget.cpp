@@ -36,7 +36,7 @@ CatalogWidget::CatalogWidget(/*QList<Product> database*/)
     }
 
 
-    QGroupBox *boxCat = new QGroupBox;
+    QGroupBox *boxCat = new QGroupBox();
     boxCat->setLayout(layCateg);
     boxCat->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+    <product>
+		<article>00001</article>
+		<name>Наименование</name>
+		<category>Категория</category>
+		<available>1</available>
+		<cost>
+			<rubles>19</rubles>
+			<pennies>99</pennies>
+		</cost>
+	</product>	
+</products>

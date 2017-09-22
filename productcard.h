@@ -5,6 +5,8 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QStyleOption>
+#include <QPainter>
 #include "product.h"
 
 class ProductCard : public QWidget
@@ -17,6 +19,8 @@ private:
 
     QLabel *name;
     QLabel *info;
+	
+	void paintEvent(QPaintEvent *);
 
 signals:
 
