@@ -13,9 +13,9 @@ ProductCard::ProductCard(Product prd)
     info->setAlignment(Qt::AlignLeft);
 
     if (prd.GetAvailable()==true)
-		setStyleSheet("background-color:#00FF7F;");
+        setStyleSheet("background-color:#69F0AE;");
 	else 
-		setStyleSheet("background-color:#B0E0E6;");
+        setStyleSheet("background-color:#DCDCDC;");
 	
     QVBoxLayout *card = new QVBoxLayout;
     card->addWidget(name);
