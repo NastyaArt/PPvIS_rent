@@ -11,8 +11,6 @@ MainWindow::MainWindow(QWidget *parent) :
     for (int i = 0; i < toolbars.length(); i++)
         toolbars.at(i)->hide();
 
-
-
     group = new QGroupBox();
 
     lblName = new QLabel();
@@ -53,8 +51,25 @@ MainWindow::MainWindow(QWidget *parent) :
 
     group->setLayout(layAll);
 
-
     setCentralWidget(group);
+
+
+    connect (butCat, SIGNAL(clicked()), this, SLOT(GetCatalog()));
+}
+
+void MainWindow::GetCatalog()
+{
+    emit GetDatabase();
+}
+
+void MainWindow::UpdateCatalog(QList<Product> base)
+{
+    catalog->CreateCatalog(base);
+}
+
+void MainWindow::ShowError()
+{
+    QMessageBox::warning(this, "Ошибка", "Не удалось загрузить базу данных", QMessageBox::Ok);
 }
 
 MainWindow::~MainWindow()

@@ -11,6 +11,16 @@ void DatabaseProduct::AddProduct(QString art, QString name, QString categ, bool 
     database.append(prd);
 }
 
+void DatabaseProduct::AddProduct(Product prd)
+{
+        database.append(prd);
+}
+
+void DatabaseProduct::ClearDatabase()
+{
+        database.clear();
+}
+/*
 void DatabaseProduct::GetDatabase()
 {
     bool ok = true;
@@ -83,5 +93,21 @@ void DatabaseProduct::GetDatabase()
 		emit SendDatabase(database);
 	else
 		emit Error();
-}
+}*/
 
+void DatabaseProduct::GetDatabase()
+{
+
+    Product prd1("00001", "Настолка1", "Категория1", 1, 19, 99);
+    Product prd2("00002", "Настолка2", "Категория2", 0, 40, 00);
+    Product prd3("00003", "Настолка3", "Категория3", 1, 45, 49);
+
+    ClearDatabase();
+    AddProduct(prd1);
+    AddProduct(prd2);
+    AddProduct(prd3);
+
+    emit SendDatabase(database);
+    emit Error();
+
+}

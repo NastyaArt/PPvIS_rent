@@ -39,6 +39,16 @@ private:
     QPushButton *butStat;
     QPushButton *butBask;
 
+signals:
+
+    void GetDatabase();
+
+private slots:
+
+    void UpdateCatalog(QList<Product> base);
+    void ShowError();
+    void GetCatalog();
+
 };
 
 #endif // MAINWINDOW_H

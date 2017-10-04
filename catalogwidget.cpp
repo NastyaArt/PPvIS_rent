@@ -8,20 +8,15 @@ CatalogWidget::CatalogWidget(/*QList<Product> database*/) //формироват
     cardsBox->setFixedSize(1100, 700);  //5*(размер одной карточки + немного) - ширина, а по высоте сделать прокрутку
     cardsBox->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
 
-    // создание каталога карточек и расположение их в боксе
+
 
   /*  QRect rect = QApplication::desktop()->screenGeometry();
     int height = rect.height();
     int width = rect.width();
     setFixedSize(width-50, heidht-100);
 */
-    Product prd1("00001", "Настолка", "Категория", 1, 19, 99);
-    ProductCard *prd1Card = new ProductCard(prd1);
 
-    QVBoxLayout *layPr = new QVBoxLayout;
-    layPr->addWidget(prd1Card);
-    layPr->setAlignment(Qt::AlignTop);
-    cardsBox->setLayout(layPr);
+
 
     setFixedHeight(700);
     listCateg << "Стратегические игры" << "Игры для вечеринок"
@@ -56,6 +51,25 @@ CatalogWidget::CatalogWidget(/*QList<Product> database*/) //формироват
     layTop->addWidget(cardsBox);  //- добавить бокс карточек
 
     setLayout(layTop);
+}
+
+// создание каталога карточек и расположение их в боксе
+void CatalogWidget::CreateCatalog(QList<Product> base)
+{
+    //цикл с созданием добавлением карточек на поле
+    QVBoxLayout *layPr = new QVBoxLayout;
+   // layPr->addWidget(prd1Card);
+    layPr->setAlignment(Qt::AlignTop);
+   // cardsBox->setLayout(layPr);
+
+    for (int i=0; i<base.length(); i++)
+    {
+        ProductCard *prdCard = new ProductCard(base.at(i));
+        layPr->addWidget(prdCard);
+    }
+
+    cardsBox->setLayout(layPr);
+
 }
 
 CatalogWidget::CatalogWidget(QList<Product> database)

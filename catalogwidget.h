@@ -5,6 +5,7 @@
 #include <QRadioButton>
 #include <QButtonGroup>
 #include <QGroupBox>
+#include <QMessageBox>
 #include "productcard.h"
 
 class CatalogWidget : public QWidget
@@ -13,6 +14,7 @@ class CatalogWidget : public QWidget
 public:
     CatalogWidget();
     CatalogWidget(QList<Product> database);
+    void CreateCatalog(QList<Product> base);
 
 private:
 

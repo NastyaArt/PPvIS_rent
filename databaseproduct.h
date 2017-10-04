@@ -18,14 +18,16 @@ private:
 
     QList<Product> database;
     void AddProduct(QString art, QString name, QString categ, bool avail, int rub, int pen);
+    void AddProduct(Product prd);
+    void ClearDatabase();
   //  QString filename=("database.xml");
 
 signals:
 
-    void SendDatabase(QList<Product> base);
+    void SendDatabase(QList<Product>);
 	void Error();
 
-public slots:
+private slots:
 
     void GetDatabase();
 
