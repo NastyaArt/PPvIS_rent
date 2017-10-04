@@ -6,19 +6,19 @@
 #include <QButtonGroup>
 #include <QGroupBox>
 #include <QMessageBox>
-#include "productcard.h"
+//#include "productcard.h"
+#include "cardsbox.h"
 
 class CatalogWidget : public QWidget
 {
     Q_OBJECT
 public:
     CatalogWidget();
-    CatalogWidget(QList<Product> database);
     void CreateCatalog(QList<Product> base);
 
 private:
 
-    QGroupBox *cardsBox;
+    CardsBox cardsBox;
     QStringList listCateg;
     QButtonGroup *btGrCateg;
 

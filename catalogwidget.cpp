@@ -1,13 +1,14 @@
 #include "catalogwidget.h"
 
-CatalogWidget::CatalogWidget(/*QList<Product> database*/) //формировать карточки не в конструкторе, а функцией
+CatalogWidget::CatalogWidget()
 {
 
-
-    cardsBox = new QGroupBox;
+ /*   cardsBox = new QGroupBox;
     cardsBox->setFixedSize(1100, 700);  //5*(размер одной карточки + немного) - ширина, а по высоте сделать прокрутку
     cardsBox->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
-
+*/
+    //вынести CardsBox еще одним классом, подавать в него список карточек, учесть расстановку карточек с изменением размеров окна
+    //и вынести в него формирование карточек
 
 
   /*  QRect rect = QApplication::desktop()->screenGeometry();
@@ -16,7 +17,7 @@ CatalogWidget::CatalogWidget(/*QList<Product> database*/) //формироват
     setFixedSize(width-50, heidht-100);
 */
 
-
+    cardsBox = new CardsBox;
 
     setFixedHeight(700);
     listCateg << "Стратегические игры" << "Игры для вечеринок"
@@ -56,7 +57,7 @@ CatalogWidget::CatalogWidget(/*QList<Product> database*/) //формироват
 // создание каталога карточек и расположение их в боксе
 void CatalogWidget::CreateCatalog(QList<Product> base)
 {
-    //цикл с созданием добавлением карточек на поле
+/*    //цикл с созданием добавлением карточек на поле
     QVBoxLayout *layPr = new QVBoxLayout;
    // layPr->addWidget(prd1Card);
     layPr->setAlignment(Qt::AlignTop);
@@ -67,13 +68,8 @@ void CatalogWidget::CreateCatalog(QList<Product> base)
         ProductCard *prdCard = new ProductCard(base.at(i));
         layPr->addWidget(prdCard);
     }
-
+*/
     cardsBox->setLayout(layPr);
-
-}
-
-CatalogWidget::CatalogWidget(QList<Product> database)
-{
 
 }
 
