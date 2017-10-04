@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QScrollArea>
+#include <QScrollBar>
 #include <QGroupBox>
 #include "productcard.h"
 
@@ -10,11 +11,12 @@ class CardsBox : public QWidget
 {
     Q_OBJECT
 public:
-    CardsBox(QList<ProductCard>);
-
+    CardsBox();
+    void AddCards(QList<Product> base);
 private:
     QScrollArea *scrollArea;
     QGroupBox *cardsBox;
+
 
 signals:
 

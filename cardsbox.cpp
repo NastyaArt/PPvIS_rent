@@ -4,7 +4,7 @@ CardsBox::CardsBox()
 {
 
     cardsBox = new QGroupBox;
-    cardsBox->setFixedSize(1100, 700);  //5*(размер одной карточки + немного) - ширина, а по высоте сделать прокрутку
+    cardsBox->setFixedSize(1100, 1000);  //5*(размер одной карточки + немного) - ширина, а по высоте сделать прокрутку
     cardsBox->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
 
     scrollArea = new QScrollArea(this);

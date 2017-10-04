@@ -18,7 +18,7 @@ public:
 
 private:
 
-    CardsBox cardsBox;
+    CardsBox *cardsBox;
     QStringList listCateg;
     QButtonGroup *btGrCateg;
 

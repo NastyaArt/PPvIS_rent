@@ -19,7 +19,7 @@ CatalogWidget::CatalogWidget()
 
     cardsBox = new CardsBox;
 
-    setFixedHeight(700);
+    setFixedHeight(600);
     listCateg << "Стратегические игры" << "Игры для вечеринок"
             << "Игры для детей" << "Развивающие игры"
             << "Тематические игры" << "Другое";
@@ -41,6 +41,7 @@ CatalogWidget::CatalogWidget()
 
     QGroupBox *boxCat = new QGroupBox();
     boxCat->setLayout(layCateg);
+    boxCat->setFixedWidth(250);
     boxCat->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
 
   // boxCat->setFixedHeight(500);
@@ -69,7 +70,8 @@ void CatalogWidget::CreateCatalog(QList<Product> base)
         layPr->addWidget(prdCard);
     }
 */
-    cardsBox->setLayout(layPr);
+  //  cardsBox->setLayout(layPr);
+    cardsBox->AddCards(base);
 
 }
 
