@@ -5,6 +5,7 @@
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QGroupBox>
+#include <QList>
 #include "productcard.h"
 
 class CardsBox : public QWidget
@@ -13,6 +14,7 @@ class CardsBox : public QWidget
 public:
     CardsBox();
     void AddCards(QList<Product> base);
+    void PlaceCards(QList<ProductCard*> cardsList);
 private:
     QScrollArea *scrollArea;
     QGroupBox *cardsBox;

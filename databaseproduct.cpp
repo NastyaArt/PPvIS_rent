@@ -20,7 +20,7 @@ void DatabaseProduct::ClearDatabase()
 {
         database.clear();
 }
-/*
+
 void DatabaseProduct::GetDatabase()
 {
     bool ok = true;
@@ -35,7 +35,7 @@ void DatabaseProduct::GetDatabase()
 	
 	database.clear();
     
-    QFile file("xml/database");
+    QFile file("xml/database.xml");
     if (!file.open(QFile::ReadOnly | QFile::Text))
         ok = false;
     else {
@@ -93,8 +93,8 @@ void DatabaseProduct::GetDatabase()
 		emit SendDatabase(database);
 	else
 		emit Error();
-}*/
-
+}
+/*
 void DatabaseProduct::GetDatabase()
 {
 
@@ -111,3 +111,4 @@ void DatabaseProduct::GetDatabase()
     emit Error();
 
 }
+*/
