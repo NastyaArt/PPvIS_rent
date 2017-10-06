@@ -19,14 +19,18 @@ CatalogWidget::CatalogWidget()
     layTop->addWidget(cardsBox);
     setLayout(layTop);
 
+
+
     //добавить коннекты для выбора категорий
-    connect(btGrCateg, SIGNAL(buttonPressed(int)), this, SLOT(SetCategory(int)));
+    connect(btGrCateg, SIGNAL(buttonPressed(int)), this, SLOT(GetCardsByCategory(int)));
 }
 
 void CatalogWidget::CreateCatalog(QList<Product> base)
 {
     database=base;
     cardsBox->CreateCards(base);
+
+
 
     GetCategories(base);
 
@@ -51,11 +55,13 @@ void CatalogWidget::CreateCatalog(QList<Product> base)
     layCateg->setAlignment(Qt::AlignTop);
     boxCat->setLayout(layCateg);
 
+    btGrCateg->button(-2)->setChecked(true);
 }
 
 void CatalogWidget::GetCategories(QList<Product> base)
 {
     listCateg.clear();
+    listCateg << "Все категории";
     for (int i = 0; i< base.length(); i++){
         if (listCateg.contains(base.at(i).GetCategory())==false)
             listCateg << base.at(i).GetCategory();
@@ -63,9 +69,9 @@ void CatalogWidget::GetCategories(QList<Product> base)
 
 }
 
-void CatalogWidget::SetCategory(int id)
+void CatalogWidget::GetCardsByCategory(int id)
 {
-    //QMessageBox::information(this, "Номер айтема", "ID = " + QString::number(id) + btGrCateg->button(id)->text() , QMessageBox::Ok);
+
     cardsBox->CreateCardsByCategory(database, btGrCateg->button(id)->text());
-    //вылетает на тематических играх ???
+
 }

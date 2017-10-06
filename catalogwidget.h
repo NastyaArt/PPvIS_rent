@@ -30,7 +30,7 @@ private:
     void GetCategories(QList<Product> base);
 
 public slots:
-    void SetCategory(int id);
+    void GetCardsByCategory(int id);
 
 };
 

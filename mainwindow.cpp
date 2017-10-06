@@ -64,6 +64,7 @@ void MainWindow::GetCatalog()
 
 void MainWindow::UpdateCatalog(QList<Product> base)
 {
+    butCat->setEnabled(false);
     catalog->CreateCatalog(base);
 }
 

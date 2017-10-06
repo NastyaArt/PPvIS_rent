@@ -42,10 +42,12 @@ void CardsBox::PlaceCards(QList<ProductCard*> cardsList)
 {
     if (cardsList.length()==0)
         return;
-    while (layPr->count()){
-        QLayoutItem *item = layPr->itemAt(0);
-        layPr->removeItem(item);
-       // layPr->removeWidget(item->widget());
+
+    while (QLayoutItem* item = layPr->takeAt(0)) {        
+        while (QLayoutItem* item1 = item->layout()->takeAt(0)) {
+            delete item1->widget();
+            delete item1;
+        }
         delete item;
     }
 
@@ -73,6 +75,11 @@ void CardsBox::PlaceCards(QList<ProductCard*> cardsList)
 void CardsBox::CreateCardsByCategory(QList<Product> base, QString categ)
 {
     QList<Product> sortBase;
+    if (categ == "Все категории")
+         AddCards(base);
+    else
+    {
+
     for (int i=0; i<base.length(); i++)
     {
         if (base.at(i).GetCategory()==categ)
@@ -80,4 +87,5 @@ void CardsBox::CreateCardsByCategory(QList<Product> base, QString categ)
     }
 
     AddCards(sortBase);
+    }
 }

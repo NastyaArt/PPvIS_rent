@@ -27,6 +27,7 @@ private:
     void PlaceCards(QList<ProductCard*> cardsList);
 
 
+
 signals:
 
 public slots:
