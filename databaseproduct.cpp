@@ -35,7 +35,7 @@ void DatabaseProduct::GetDatabase()
 	
 	database.clear();
     
-    QFile file("xml/database.xml");
+    QFile file(filename);
     if (!file.open(QFile::ReadOnly | QFile::Text))
         ok = false;
     else {
@@ -89,26 +89,22 @@ void DatabaseProduct::GetDatabase()
         }
         file.close();
     }
+    SortByAvailable();
 	if (ok==true)
 		emit SendDatabase(database);
 	else
 		emit Error();
 }
-/*
-void DatabaseProduct::GetDatabase()
+
+void DatabaseProduct::SortByAvailable()
 {
-
-    Product prd1("00001", "Настолка1", "Категория1", 1, 19, 99);
-    Product prd2("00002", "Настолка2", "Категория2", 0, 40, 00);
-    Product prd3("00003", "Настолка3", "Категория3", 1, 45, 49);
-
-    ClearDatabase();
-    AddProduct(prd1);
-    AddProduct(prd2);
-    AddProduct(prd3);
-
-    emit SendDatabase(database);
-    emit Error();
+    //пузырьковую сортировку переделать
+    for (int i = 0; i <database.length()-1; i++)
+          for (int j = i+1; j < database.length(); j++)
+                  if (database.at(i).GetAvailable() < database.at(j).GetAvailable()) {
+                  database.swap(i, j);
+              }
 
 }
-*/
+
+

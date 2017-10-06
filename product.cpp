@@ -10,32 +10,32 @@ Product::Product(QString art, QString nm, QString cat, bool avlbl, int rub, int 
     pennies = pen;
 }
 
-QString Product::GetArticle()
+QString Product::GetArticle() const
 {
     return article;
 }
 
-QString Product::GetName()
+QString Product::GetName() const
 {
     return name;
 }
 
-QString Product::GetCategory()
+QString Product::GetCategory() const
 {
     return category;
 }
 
-bool Product::GetAvailable()
+bool Product::GetAvailable() const
 {
     return available;
 }
 
-int Product::GetRubles()
+int Product::GetRubles() const
 {
     return rubles;
 }
 
-int Product::GetPennies()
+int Product::GetPennies() const
 {
     return pennies;
 }

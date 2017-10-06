@@ -8,12 +8,12 @@ class Product
 public:
     Product(QString art, QString nm, QString cat, bool avlbl, int rub, int pen);
 
-    QString GetArticle();
-    QString GetName();
-    QString GetCategory();
-    bool GetAvailable();
-    int GetRubles();
-    int GetPennies();
+    QString GetArticle() const;
+    QString GetName() const;
+    QString GetCategory() const;
+    bool GetAvailable() const;
+    int GetRubles() const;
+    int GetPennies() const;
 
 private:
     QString article;

@@ -13,12 +13,18 @@ class CardsBox : public QWidget
     Q_OBJECT
 public:
     CardsBox();
-    void AddCards(QList<Product> base);
-    void PlaceCards(QList<ProductCard*> cardsList);
+    void CreateCards(QList<Product> base);
+    void CreateCardsByCategory(QList<Product> base, QString categ);
+
 private:
+
+    QVBoxLayout *layPr;
     QScrollArea *scrollArea;
     QGroupBox *cardsBox;
     const int cardsDist = 10;
+
+    void AddCards(QList<Product> base);
+    void PlaceCards(QList<ProductCard*> cardsList);
 
 
 signals:

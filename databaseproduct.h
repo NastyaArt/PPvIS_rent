@@ -14,13 +14,19 @@ public:
 
     DatabaseProduct();
 
+
+
 private:
 
     QList<Product> database;
     void AddProduct(QString art, QString name, QString categ, bool avail, int rub, int pen);
     void AddProduct(Product prd);
     void ClearDatabase();
-  //  QString filename=("database.xml");
+    void SortByAvailable();
+
+    const QString filename=("xml/database.xml");
+
+
 
 signals:
 

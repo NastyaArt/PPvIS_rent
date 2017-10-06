@@ -4,7 +4,7 @@ CardsBox::CardsBox()
 {
 
     cardsBox = new QGroupBox;
-    cardsBox->setFixedSize(1050, 575);  //5*(размер одной карточки + немного) - ширина, а по высоте сделать прокрутку
+    cardsBox->setFixedSize(1050, 573);  //5*(размер одной карточки + немного) - ширина, а по высоте сделать прокрутку
     cardsBox->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
 
     scrollArea = new QScrollArea(this);
@@ -12,38 +12,46 @@ CardsBox::CardsBox()
     scrollArea->setWidget(cardsBox);
     scrollArea->setFixedSize(1070, 575);
 
+
+    layPr = new QVBoxLayout;
+    layPr->setAlignment(Qt::AlignTop);
+
+    cardsBox->setLayout(layPr);
+
+}
+
+void CardsBox::CreateCards(QList<Product> base)
+{
+     AddCards(base);
 }
 
 void CardsBox::AddCards(QList<Product> base)
 {
-
-
     QList<ProductCard*> cardsList;
+
     for (int i=0; i<base.length(); i++)
     {
         ProductCard *prdCard = new ProductCard(base.at(i));
         cardsList.append(prdCard);
-        //layPr->addWidget(prdCard);
     }
 
     PlaceCards(cardsList);
-
-//    cardsBox->setFixedSize(1100, base.length()*);
-
 }
-
 
 void CardsBox::PlaceCards(QList<ProductCard*> cardsList)
 {
-    QVBoxLayout *layPr = new QVBoxLayout;
-    layPr->setAlignment(Qt::AlignTop);
+    if (cardsList.length()==0)
+        return;
+    while (layPr->count()){
+        QLayoutItem *item = layPr->itemAt(0);
+        layPr->removeItem(item);
+       // layPr->removeWidget(item->widget());
+        delete item;
+    }
 
     //вычисление количества исходя из размеров экрана
-    int cardsInRow = 3;
+    int cardsInRow = 5;
 
-/*    for (int i=0; i<cardsList.length(); i++)
-        layPr->addWidget(cardsList.at(i));
-*/
     for (int i=0; i<cardsList.length(); i++){
         QHBoxLayout *layRow = new QHBoxLayout;
         layRow->setAlignment(Qt::AlignTop);
@@ -54,8 +62,22 @@ void CardsBox::PlaceCards(QList<ProductCard*> cardsList)
         layPr->addLayout(layRow);
     }
     //переделать вычисление размеров
-    cardsBox->setFixedHeight(cardsList.length()/cardsInRow*cardsList.at(1)->height()+(cardsList.length()/cardsInRow+1)*cardsDist);
-    cardsBox->setLayout(layPr);
+    int boxHeight = cardsList.length()/cardsInRow*cardsList.at(0)->height()+(cardsList.length()/cardsInRow+1)*cardsDist;
+    if (boxHeight > scrollArea->height())
+        cardsBox->setFixedHeight(boxHeight);
+    else
+        cardsBox->setFixedHeight(scrollArea->height()-2);
 
+}
 
+void CardsBox::CreateCardsByCategory(QList<Product> base, QString categ)
+{
+    QList<Product> sortBase;
+    for (int i=0; i<base.length(); i++)
+    {
+        if (base.at(i).GetCategory()==categ)
+            sortBase.append(base.at(i));
+    }
+
+    AddCards(sortBase);
 }

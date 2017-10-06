@@ -15,15 +15,22 @@ class CatalogWidget : public QWidget
 public:
     CatalogWidget();
     void CreateCatalog(QList<Product> base);
+    QList<Product> database;
 
 private:
 
+    QGroupBox *boxCat;
     CardsBox *cardsBox;
     QStringList listCateg;
     QButtonGroup *btGrCateg;
 
     QList<QRadioButton*> *rbutCateg;
     QList<ProductCard> cards;
+
+    void GetCategories(QList<Product> base);
+
+public slots:
+    void SetCategory(int id);
 
 };
 

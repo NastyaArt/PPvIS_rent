@@ -11,6 +11,7 @@ ProductCard::ProductCard(Product prd)
                   QString::number(prd.GetRubles()) + "." + QString::number(prd.GetPennies()) +
                   "<br/></b>Категория: <b>" + prd.GetCategory());
     info->setAlignment(Qt::AlignLeft);
+    info->setWordWrap(true);
 
     if (prd.GetAvailable()==true)
         setStyleSheet("background-color:#69F0AE;");
