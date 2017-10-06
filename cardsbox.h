@@ -18,6 +18,7 @@ public:
 private:
     QScrollArea *scrollArea;
     QGroupBox *cardsBox;
+    const int cardsDist = 10;
 
 
 signals:
