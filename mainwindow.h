@@ -9,6 +9,7 @@
 #include <QGroupBox>
 #include <QStringList>
 #include <QDesktopWidget>
+
 #include "catalogwidget.h"
 
 
@@ -28,6 +29,9 @@ private:
     Ui::MainWindow *ui;
 
     QGroupBox *group;
+    QLabel *mainPage;
+
+  //  QStackedWidget *pages;
 
     QLabel *lblName;
 

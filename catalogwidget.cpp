@@ -2,26 +2,58 @@
 
 CatalogWidget::CatalogWidget()
 {
+    setFixedHeight(600);
+
+    boxSearch = new QGroupBox;
+
     cardsBox = new CardsBox;
 
-    setFixedHeight(600);
+    boxCat = new QGroupBox("Категория");
+
+  //  boxCat->setFixedWidth(250);
+  //  boxCat->setStyleSheet("background-color : rgba(127, 255, 212, 0.4)");
 
     rbutCateg = new QList<QRadioButton*>;
     btGrCateg = new QButtonGroup;
 
-    boxCat = new QGroupBox();
+    boxCost =  new QGroupBox("Поиск по стоимости");
+    lblCost =  new QLabel("Стоимость в сутки:");
+    ldlCostFrom =  new QLabel(" От ");
+    lineCostFrom = new QLineEdit;
+    lblCostTo =  new QLabel(" До ");
+    lineCostTo = new QLineEdit;
+    butSearchByCost =  new QPushButton("Найти");
 
-    boxCat->setFixedWidth(250);
-    boxCat->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
+    boxCost->setStyleSheet("QPushButton {background-color : #ADD8E6} QLineEdit {background-color: #F0FFFF}");
 
-    QHBoxLayout *layTop = new QHBoxLayout;
-    layTop->addWidget(boxCat);
-    layTop->addWidget(cardsBox);
-    setLayout(layTop);
+    QHBoxLayout *layCostInput = new QHBoxLayout;
+    layCostInput->addWidget(ldlCostFrom);
+    layCostInput->addWidget(lineCostFrom);
+    layCostInput->addWidget(lblCostTo);
+    layCostInput->addWidget(lineCostTo);
 
+    QVBoxLayout *layCostSrch = new QVBoxLayout;
+    layCostSrch->addWidget(lblCost);
+    layCostSrch->addLayout(layCostInput);
+    layCostSrch->addWidget(butSearchByCost);
+   // layCostSrch->setAlignment(Qt::AlignTop);
 
+    boxCost->setLayout(layCostSrch);
 
-    //добавить коннекты для выбора категорий
+    QVBoxLayout *laySrch = new QVBoxLayout;
+    laySrch->addWidget(boxCat);
+    laySrch->addWidget(boxCost);
+    laySrch->setAlignment(Qt::AlignTop);
+
+    boxSearch->setLayout(laySrch);
+    boxSearch->setFixedWidth(250);
+    boxSearch->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
+
+    QHBoxLayout *layAll = new QHBoxLayout;
+    layAll->addWidget(boxSearch);
+    layAll->addWidget(cardsBox);
+    setLayout(layAll);
+
     connect(btGrCateg, SIGNAL(buttonPressed(int)), this, SLOT(GetCardsByCategory(int)));
 }
 
@@ -29,8 +61,6 @@ void CatalogWidget::CreateCatalog(QList<Product> base)
 {
     database=base;
     cardsBox->CreateCards(base);
-
-
 
     GetCategories(base);
 

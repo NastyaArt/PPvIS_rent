@@ -6,7 +6,8 @@
 #include <QButtonGroup>
 #include <QGroupBox>
 #include <QMessageBox>
-//#include "productcard.h"
+#include <QPushButton>
+#include <QLineEdit>
 #include "cardsbox.h"
 
 class CatalogWidget : public QWidget
@@ -18,11 +19,21 @@ public:
     QList<Product> database;
 
 private:
+    CardsBox *cardsBox;
+
+    QGroupBox *boxSearch;
 
     QGroupBox *boxCat;
-    CardsBox *cardsBox;
     QStringList listCateg;
     QButtonGroup *btGrCateg;
+
+    QGroupBox *boxCost;
+    QLabel *lblCost;
+    QLabel *ldlCostFrom;
+    QLineEdit *lineCostFrom;
+    QLabel *lblCostTo;
+    QLineEdit*lineCostTo;
+    QPushButton *butSearchByCost;
 
     QList<QRadioButton*> *rbutCateg;
     QList<ProductCard> cards;
