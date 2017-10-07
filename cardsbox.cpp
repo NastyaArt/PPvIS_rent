@@ -29,9 +29,9 @@ void CardsBox::AddCards(QList<Product> base)
 {
     QList<ProductCard*> cardsList;
 
-    for (int i=0; i<base.length(); i++)
+    for (int prdId=0; prdId<base.length(); prdId++)
     {
-        ProductCard *prdCard = new ProductCard(base.at(i));
+        ProductCard *prdCard = new ProductCard(base.at(prdId));
         cardsList.append(prdCard);
     }
 
@@ -54,13 +54,13 @@ void CardsBox::PlaceCards(QList<ProductCard*> cardsList)
     //вычисление количества исходя из размеров экрана
     int cardsInRow = 5;
 
-    for (int i=0; i<cardsList.length(); i++){
+    for (int cardId=0; cardId<cardsList.length(); cardId++){
         QHBoxLayout *layRow = new QHBoxLayout;
         layRow->setAlignment(Qt::AlignTop);
-        for (int j=0; j<cardsInRow; j++)
-            if (i+j<cardsList.length())
-                layRow->addWidget(cardsList.at(i+j));
-        i=i+cardsInRow-1;
+        for (int cardInRowId=0; cardInRowId<cardsInRow; cardInRowId++)
+            if ((cardId+cardInRowId)<cardsList.length())
+                layRow->addWidget(cardsList.at(cardId+cardInRowId));
+        cardId=cardId+cardsInRow-1;
         layPr->addLayout(layRow);
     }
     //переделать вычисление размеров
@@ -80,10 +80,10 @@ void CardsBox::CreateCardsByCategory(QList<Product> base, QString categ)
     else
     {
 
-    for (int i=0; i<base.length(); i++)
+    for (int prdId=0; prdId<base.length(); prdId++)
     {
-        if (base.at(i).GetCategory()==categ)
-            sortBase.append(base.at(i));
+        if (base.at(prdId).GetCategory()==categ)
+            sortBase.append(base.at(prdId));
     }
 
     AddCards(sortBase);

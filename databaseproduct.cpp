@@ -98,13 +98,11 @@ void DatabaseProduct::GetDatabase()
 
 void DatabaseProduct::SortByAvailable()
 {
-    //пузырьковую сортировку переделать
-    for (int i = 0; i <database.length()-1; i++)
-          for (int j = i+1; j < database.length(); j++)
-                  if (database.at(i).GetAvailable() < database.at(j).GetAvailable()) {
-                  database.swap(i, j);
+    for (int prd1Id = 0; prd1Id <database.length()-1; prd1Id++)
+          for (int prd2Id = prd1Id+1; prd2Id < database.length(); prd2Id++)
+                  if (database.at(prd1Id).GetAvailable() < database.at(prd2Id).GetAvailable()) {
+                  database.swap(prd1Id, prd2Id);
               }
-
 }
 
 

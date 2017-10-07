@@ -63,21 +63,21 @@ void CatalogWidget::CreateCatalog(QList<Product> base)
 
     rbutCateg->clear();
 
-    for (int i = 0; i < btGrCateg->buttons().length(); i++) {
-        btGrCateg->removeButton(btGrCateg->buttons().at(i));
+    for (int butId = 0; butId < btGrCateg->buttons().length(); butId++) {
+        btGrCateg->removeButton(btGrCateg->buttons().at(butId));
     }
 
 
-    for (int i = 0; i < listCateg.length(); i++) {
-        QRadioButton* rbut = new QRadioButton(listCateg.at(i));
+    for (int categId = 0; categId < listCateg.length(); categId++) {
+        QRadioButton* rbut = new QRadioButton(listCateg.at(categId));
         rbut->setStyleSheet("background-color : rgb(176, 224, 230); font-size: 11pt;");
         rbutCateg->append(rbut);
-        btGrCateg->addButton(rbutCateg->at(i));
+        btGrCateg->addButton(rbutCateg->at(categId));
     }
 
     QVBoxLayout *layCateg = new QVBoxLayout;
-    for (int i = 0; i < rbutCateg->length(); i++) {
-        layCateg->addWidget(rbutCateg->at(i));
+    for (int butId = 0; butId < rbutCateg->length(); butId++) {
+        layCateg->addWidget(rbutCateg->at(butId));
     }
     layCateg->setAlignment(Qt::AlignTop);
     boxCat->setLayout(layCateg);
@@ -89,9 +89,9 @@ void CatalogWidget::GetCategories(QList<Product> base)
 {
     listCateg.clear();
     listCateg << "Все категории";
-    for (int i = 0; i< base.length(); i++){
-        if (listCateg.contains(base.at(i).GetCategory())==false)
-            listCateg << base.at(i).GetCategory();
+    for (int prdId = 0; prdId< base.length(); prdId++){
+        if (listCateg.contains(base.at(prdId).GetCategory())==false)
+            listCateg << base.at(prdId).GetCategory();
     }
 
 }
@@ -100,5 +100,10 @@ void CatalogWidget::GetCardsByCategory(int id)
 {
 
     cardsBox->CreateCardsByCategory(database, btGrCateg->button(id)->text());
+
+}
+
+void CatalogWidget::GetCardsByCost()
+{
 
 }
