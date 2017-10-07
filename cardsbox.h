@@ -15,6 +15,7 @@ public:
     CardsBox();
     void CreateCards(QList<Product> base);
     void CreateCardsByCategory(QList<Product> base, QString categ);
+    void CreateCardsByCost(QList<Product> base, int from, int to);
 
 private:
 
@@ -22,6 +23,9 @@ private:
     QScrollArea *scrollArea;
     QGroupBox *cardsBox;
     const int cardsDist = 10;
+    //вычисление количества исходя из размеров экрана доделать
+    const int cardsInRow = 5;
+
 
     void AddCards(QList<Product> base);
     void PlaceCards(QList<ProductCard*> cardsList);

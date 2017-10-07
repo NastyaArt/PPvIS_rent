@@ -14,7 +14,7 @@ CatalogWidget::CatalogWidget()
     btGrCateg = new QButtonGroup;
 
     boxCost =  new QGroupBox("Поиск по стоимости");
-    lblCost =  new QLabel("Стоимость в сутки:");
+    lblCost =  new QLabel("Стоимость (руб. в сутки):");
     ldlCostFrom =  new QLabel(" От ");
     lineCostFrom = new QLineEdit;
     lblCostTo =  new QLabel(" До ");
@@ -105,5 +105,12 @@ void CatalogWidget::GetCardsByCategory(int id)
 
 void CatalogWidget::GetCardsByCost()
 {
-
+    bool ok1 = true, ok2 = true;
+    int from, to;
+    from = lineCostFrom->text().toInt(&ok1, 10);
+    to = lineCostTo->text().toInt(&ok2, 10);
+    if (ok1==true && ok2==true && from<=to && from>=0 && to>0)
+        cardsBox->CreateCardsByCost(database, from, to);
+    else
+        QMessageBox::warning(this, "Ошибка", "Введены некорректные данные!", QMessageBox::Ok);
 }
