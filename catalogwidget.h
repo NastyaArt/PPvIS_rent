@@ -42,6 +42,7 @@ private:
 
 public slots:
     void GetCardsByCategory(int id);
+    void GetCardsByCost();
 
 };
 

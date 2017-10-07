@@ -10,9 +10,6 @@ CatalogWidget::CatalogWidget()
 
     boxCat = new QGroupBox("Категория");
 
-  //  boxCat->setFixedWidth(250);
-  //  boxCat->setStyleSheet("background-color : rgba(127, 255, 212, 0.4)");
-
     rbutCateg = new QList<QRadioButton*>;
     btGrCateg = new QButtonGroup;
 
@@ -36,7 +33,6 @@ CatalogWidget::CatalogWidget()
     layCostSrch->addWidget(lblCost);
     layCostSrch->addLayout(layCostInput);
     layCostSrch->addWidget(butSearchByCost);
-   // layCostSrch->setAlignment(Qt::AlignTop);
 
     boxCost->setLayout(layCostSrch);
 
@@ -55,6 +51,7 @@ CatalogWidget::CatalogWidget()
     setLayout(layAll);
 
     connect(btGrCateg, SIGNAL(buttonPressed(int)), this, SLOT(GetCardsByCategory(int)));
+    connect(butSearchByCost, SIGNAL(clicked(bool)), this, SLOT(GetCardsByCost()));
 }
 
 void CatalogWidget::CreateCatalog(QList<Product> base)

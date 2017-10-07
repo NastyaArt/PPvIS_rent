@@ -18,13 +18,17 @@ SOURCES += main.cpp\
     databaseproduct.cpp \
     productcard.cpp \
     catalogwidget.cpp \
-    cardsbox.cpp
+    cardsbox.cpp \
+    basketcard.cpp \
+    basketwidget.cpp
 
 HEADERS  += mainwindow.h \
     product.h \
     databaseproduct.h \
     productcard.h \
     catalogwidget.h \
-    cardsbox.h
+    cardsbox.h \
+    basketcard.h \
+    basketwidget.h
 
 FORMS    += mainwindow.ui
