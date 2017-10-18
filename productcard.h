@@ -7,6 +7,8 @@
 #include <QVBoxLayout>
 #include <QStyleOption>
 #include <QPainter>
+#include <QPushButton>
+#include <QLineEdit>
 #include "product.h"
 
 class ProductCard : public QWidget
@@ -17,8 +19,11 @@ public:
 
 private:
 
-    QLabel *name;
-    QLabel *info;
+    QLabel *lblname;
+    QLabel *lblinfo;
+    QLabel *lblnumOfDays;
+    QLineEdit *lnnumOfDays;
+    QPushButton *butBuy;
 	
 	void paintEvent(QPaintEvent *);
 

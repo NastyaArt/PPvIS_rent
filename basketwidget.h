@@ -2,6 +2,7 @@
 #define BASKETWIDGET_H
 
 #include <QWidget>
+#include "basketcard.h"
 
 class BasketWidget : public QWidget
 {

@@ -20,12 +20,12 @@ MainWindow::MainWindow(QWidget *parent) :
     butCat = new QPushButton("Категории");
     butCat ->setFixedSize(120,30);
 
-    butInf = new QPushButton("Оплата и доставка");
+/*    butInf = new QPushButton("Оплата и доставка");
     butInf ->setFixedSize(120,30);
 
     butCont = new QPushButton("Контакты");
     butCont ->setFixedSize(120,30);
-
+*/
     butStat = new QPushButton("Статус заказов");
     butStat ->setFixedSize(120,30);
 
@@ -36,8 +36,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QHBoxLayout *layBut = new QHBoxLayout;
     layBut->addWidget(butCat);
-    layBut->addWidget(butInf);
-    layBut->addWidget(butCont);
+//    layBut->addWidget(butInf);
+//    layBut->addWidget(butCont);
     layBut->addWidget(butStat);
     layBut->addWidget(butBask);
 
@@ -52,7 +52,6 @@ MainWindow::MainWindow(QWidget *parent) :
     group->setLayout(layAll);
 
     setCentralWidget(group);
-
 
     connect (butCat, SIGNAL(clicked()), this, SLOT(GetCatalog()));
 }

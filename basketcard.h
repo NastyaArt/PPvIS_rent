@@ -2,12 +2,23 @@
 #define BASKETCARD_H
 
 #include <QWidget>
+#include <QLabel>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QStyleOption>
+#include <QPainter>
+#include <QPushButton>
+#include "product.h"
 
 class BasketCard : public QWidget
 {
     Q_OBJECT
 public:
-    explicit BasketCard(QWidget *parent = 0);
+    BasketCard(Product prd, int numDays);
+
+private:
+    QLabel *lblInfo;
+    QPushButton *butDel;
 
 signals:
 

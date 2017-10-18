@@ -10,6 +10,7 @@
 #include <QStringList>
 #include <QDesktopWidget>
 
+#include "basketwidget.h"
 #include "catalogwidget.h"
 
 
@@ -38,8 +39,8 @@ private:
     CatalogWidget *catalog;
 
     QPushButton *butCat;
-    QPushButton *butInf;
-    QPushButton *butCont;
+ //   QPushButton *butInf;
+  //  QPushButton *butCont;
     QPushButton *butStat;
     QPushButton *butBask;
 

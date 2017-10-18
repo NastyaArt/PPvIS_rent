@@ -20,7 +20,9 @@ SOURCES += main.cpp\
     catalogwidget.cpp \
     cardsbox.cpp \
     basketcard.cpp \
-    basketwidget.cpp
+    basketwidget.cpp \
+    statuscard.cpp \
+    statuswidget.cpp
 
 HEADERS  += mainwindow.h \
     product.h \
@@ -29,6 +31,8 @@ HEADERS  += mainwindow.h \
     catalogwidget.h \
     cardsbox.h \
     basketcard.h \
-    basketwidget.h
+    basketwidget.h \
+    statuscard.h \
+    statuswidget.h
 
 FORMS    += mainwindow.ui

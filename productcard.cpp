@@ -5,24 +5,38 @@ ProductCard::ProductCard(Product prd)
 
     setFixedSize(200, 200);
 
-    name = new QLabel(prd.GetName());
-    info = new QLabel(); 
-    info->setText("Артикул: <b>" + prd.GetArticle() + "<br/></b>Стоимость в сутки:<br/><b>" +
+    lblname = new QLabel(prd.GetName());
+    lblinfo = new QLabel();
+    lblinfo->setText("Артикул: <b>" + prd.GetArticle() + "<br/></b>Стоимость в сутки:<br/><b>" +
                   QString::number(prd.GetRubles()) + "." + QString::number(prd.GetPennies()) +
                   "<br/></b>Категория: <b>" + prd.GetCategory());
-    info->setAlignment(Qt::AlignLeft);
-    info->setWordWrap(true);
+    lblinfo->setAlignment(Qt::AlignLeft);
+    lblinfo->setWordWrap(true);
+    lblnumOfDays = new QLabel("Количество дней: ");
+    lnnumOfDays = new QLineEdit;
+    lnnumOfDays->setStyleSheet("background-color:#F0FFFF;");
+    butBuy = new QPushButton("Заказать");
+    butBuy->setStyleSheet("background-color : #ADD8E6");
 
     if (prd.GetAvailable()==true)
-        setStyleSheet("background-color:#69F0AE;");
-	else 
+        setStyleSheet("background-color:#BDFCC1;");
+    else {
+        butBuy->setEnabled(false);
+        butBuy->setText("Нет в наличии");
         setStyleSheet("background-color:#DCDCDC;");
+    }
 	
-    QVBoxLayout *card = new QVBoxLayout;
-    card->addWidget(name);
-    card->addWidget(info);
+    QHBoxLayout *layDays = new QHBoxLayout;
+    layDays->addWidget(lblnumOfDays);
+    layDays->addWidget(lnnumOfDays);
 
-    setLayout(card);
+    QVBoxLayout *layCard = new QVBoxLayout;
+    layCard->addWidget(lblname);
+    layCard->addWidget(lblinfo);
+    layCard->addLayout(layDays);
+    layCard->addWidget(butBuy);
+
+    setLayout(layCard);
 }
 
 
