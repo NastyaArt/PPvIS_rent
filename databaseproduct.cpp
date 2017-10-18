@@ -105,4 +105,9 @@ void DatabaseProduct::SortByAvailable()
               }
 }
 
+void DatabaseProduct::GetProductByArticle()
+{
+
+}
+
 

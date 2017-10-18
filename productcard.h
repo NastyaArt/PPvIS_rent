@@ -21,8 +21,6 @@ private:
 
     QLabel *lblname;
     QLabel *lblinfo;
-    QLabel *lblnumOfDays;
-    QLineEdit *lnnumOfDays;
     QPushButton *butBuy;
 	
 	void paintEvent(QPaintEvent *);

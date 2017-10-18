@@ -12,9 +12,7 @@ ProductCard::ProductCard(Product prd)
                   "<br/></b>Категория: <b>" + prd.GetCategory());
     lblinfo->setAlignment(Qt::AlignLeft);
     lblinfo->setWordWrap(true);
-    lblnumOfDays = new QLabel("Количество дней: ");
-    lnnumOfDays = new QLineEdit;
-    lnnumOfDays->setStyleSheet("background-color:#F0FFFF;");
+
     butBuy = new QPushButton("Заказать");
     butBuy->setStyleSheet("background-color : #ADD8E6");
 
@@ -26,14 +24,9 @@ ProductCard::ProductCard(Product prd)
         setStyleSheet("background-color:#DCDCDC;");
     }
 	
-    QHBoxLayout *layDays = new QHBoxLayout;
-    layDays->addWidget(lblnumOfDays);
-    layDays->addWidget(lnnumOfDays);
-
     QVBoxLayout *layCard = new QVBoxLayout;
     layCard->addWidget(lblname);
     layCard->addWidget(lblinfo);
-    layCard->addLayout(layDays);
     layCard->addWidget(butBuy);
 
     setLayout(layCard);
