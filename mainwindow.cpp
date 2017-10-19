@@ -19,26 +19,32 @@ MainWindow::MainWindow(QWidget *parent) :
 
     butCat = new QPushButton("Категории");
     butCat ->setFixedSize(120,30);
+    butCat->setCheckable(true);
 
-/*    butInf = new QPushButton("Оплата и доставка");
-    butInf ->setFixedSize(120,30);
-
-    butCont = new QPushButton("Контакты");
-    butCont ->setFixedSize(120,30);
-*/
     butStat = new QPushButton("Статус заказов");
     butStat ->setFixedSize(120,30);
+    butStat->setCheckable(true);
 
     butBask = new QPushButton("Корзина");
     butBask ->setFixedSize(120,30);
+    butBask->setCheckable(true);
 
-    catalog = new CatalogWidget;
-     basket = new BasketWidget;
+    butns = new QButtonGroup;
+    butns->addButton(butCat);
+    butns->addButton(butStat);
+    butns->addButton(butBask);
+
+    catalog = new CatalogWidget;    
+    status = new StatusWidget;
+    basket = new BasketWidget;
+
+    pages = new QStackedWidget;
+    pages->addWidget(catalog);
+    pages->addWidget(status);
+    pages->addWidget(basket);
 
     QHBoxLayout *layBut = new QHBoxLayout;
     layBut->addWidget(butCat);
-//    layBut->addWidget(butInf);
-//    layBut->addWidget(butCont);
     layBut->addWidget(butStat);
     layBut->addWidget(butBask);
 
@@ -46,17 +52,20 @@ MainWindow::MainWindow(QWidget *parent) :
     layHead->addWidget(lblName);
     layHead->addLayout(layBut);
 
+
     QVBoxLayout *layAll = new QVBoxLayout;
     layAll->addLayout(layHead);
-    layAll->addWidget(catalog);
+    layAll->addWidget(pages);
 
     group->setLayout(layAll);
 
-    setCentralWidget(group);
+    setCentralWidget(group);    
 
-    connect (butCat, SIGNAL(clicked()), this, SLOT(GetCatalog())); //ShowCatalog()
-    connect (butStat, SIGNAL(clicked()), this, SLOT(ShowStatus()));  //ShowStatus()
-    connect (butBask, SIGNAL(clicked()), basket, SLOT(show()));  //ShowBasket()
+    connect (butCat, SIGNAL(toggled(bool)), this, SLOT(ShowCatalog(bool)));
+    connect (butStat, SIGNAL(toggled(bool)), this, SLOT(ShowStatus(bool)));
+    connect (butBask, SIGNAL(toggled(bool)), this, SLOT(ShowBasket(bool)));
+
+    butCat->toggle();
 }
 
 void MainWindow::GetCatalog()
@@ -66,7 +75,6 @@ void MainWindow::GetCatalog()
 
 void MainWindow::UpdateCatalog(QList<Product> base)
 {
-    butCat->setEnabled(false);
     catalog->CreateCatalog(base);
 }
 
@@ -75,19 +83,22 @@ void MainWindow::ShowError()
     QMessageBox::warning(this, "Ошибка", "Не удалось загрузить базу данных", QMessageBox::Ok);
 }
 
-void MainWindow::ShowCatalog()
+void MainWindow::ShowCatalog(bool on)
 {
-
+    if (on)
+        pages->setCurrentWidget(catalog);
 }
 
-void MainWindow::ShowStatus()
+void MainWindow::ShowStatus(bool on)
 {
-
+    if (on)
+        pages->setCurrentWidget(status);
 }
 
-void MainWindow::ShowBasket()
+void MainWindow::ShowBasket(bool on)
 {
-
+    if (on)
+        pages->setCurrentWidget(basket);
 }
 
 MainWindow::~MainWindow()

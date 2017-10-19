@@ -5,14 +5,15 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
     DatabaseProduct base;
+    MainWindow w;
 
     QObject::connect(&w, SIGNAL(GetDatabase()), &base, SLOT(GetDatabase()));
     QObject::connect(&base, SIGNAL(SendDatabase(QList<Product>)), &w, SLOT(UpdateCatalog(QList<Product>)));
     QObject::connect(&base, SIGNAL(Error()), &w, SLOT(ShowError()));
 
     w.setMinimumSize(800, 600);
+    w.GetCatalog();
 
     QPalette p = w.palette();
     QRect rect = QApplication::desktop()->screenGeometry();

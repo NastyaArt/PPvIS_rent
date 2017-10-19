@@ -4,14 +4,18 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QPushButton>
+#include <QButtonGroup>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGroupBox>
 #include <QStringList>
 #include <QDesktopWidget>
+#include <QStackedWidget>
 
 #include "basketwidget.h"
+#include "statuswidget.h"
 #include "catalogwidget.h"
+
 
 
 namespace Ui {
@@ -29,35 +33,34 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    QGroupBox *group;
-    QLabel *mainPage;
-
-  //  QStackedWidget *pages;
-
-    QLabel *lblName;
-
     CatalogWidget *catalog;
+    StatusWidget *status;
     BasketWidget *basket;
 
+    QStackedWidget *pages;
+
+    QLabel *lblName;
+    QGroupBox *group;
+
     QPushButton *butCat;
- //   QPushButton *butInf;
-  //  QPushButton *butCont;
     QPushButton *butStat;
     QPushButton *butBask;
+
+    QButtonGroup *butns;
 
 signals:
 
     void GetDatabase();
 
-private slots:
+public slots:
 
     void UpdateCatalog(QList<Product> base);
     void ShowError();
     void GetCatalog();
 
-    void ShowCatalog();
-    void ShowStatus();
-    void ShowBasket();
+    void ShowCatalog(bool on);
+    void ShowStatus(bool on);
+    void ShowBasket(bool on);
 
 };
 
