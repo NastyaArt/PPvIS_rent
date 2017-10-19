@@ -50,6 +50,7 @@ private:
 
 signals:
 
+    void SendArticleToGetProduct(QString article);
     void GetDatabase();
 
 public slots:
@@ -57,6 +58,8 @@ public slots:
     void UpdateCatalog(QList<Product> base);
     void ShowError();
     void GetCatalog();
+    void GetProductByArticle(QString article);
+    void SendProduct(Product prd);
 
     void ShowCatalog(bool on);
     void ShowStatus(bool on);

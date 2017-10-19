@@ -9,6 +9,8 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include "basketcard.h"
 
 class BasketWidget : public QWidget
@@ -18,7 +20,7 @@ public:
     BasketWidget();
 private:
 
-    QStringList cardsArticles; //список артикулов
+    QStringList *cardsArticles; //список артикулов
 
     QVBoxLayout *layCards;
     QScrollArea *scrollArea;
@@ -38,6 +40,8 @@ signals:
 public slots:
 
     void ButPayOrder();
+    void AddProduct(QString article);
+    void AddProductCard(Product prd);
 };
 
 #endif // BASKETWIDGET_H

@@ -52,6 +52,7 @@ CatalogWidget::CatalogWidget()
 
     connect(btGrCateg, SIGNAL(buttonPressed(int)), this, SLOT(GetCardsByCategory(int)));
     connect(butSearchByCost, SIGNAL(clicked(bool)), this, SLOT(GetCardsByCost()));
+    connect(cardsBox, SIGNAL(SendArticleToGetProduct(QString)), this, SLOT(GetProductByArticle(QString)));
 }
 
 void CatalogWidget::CreateCatalog(QList<Product> base)
@@ -114,3 +115,10 @@ void CatalogWidget::GetCardsByCost()
     else
         QMessageBox::warning(this, "Ошибка", "Введены некорректные данные!", QMessageBox::Ok);
 }
+
+void CatalogWidget::GetProductByArticle(QString article)
+{
+    emit SendArticleToGetProduct(article);
+
+}
+

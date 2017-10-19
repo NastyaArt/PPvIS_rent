@@ -19,6 +19,7 @@ public:
 
 private:
 
+    QString article;
     QLabel *lblname;
     QLabel *lblinfo;
     QPushButton *butBuy;
@@ -26,8 +27,10 @@ private:
 	void paintEvent(QPaintEvent *);
 
 signals:
+    void SendProduct(QString article);
 
 public slots:
+    void BuyProduct();
 };
 
 #endif // PRODUCTCARD_H

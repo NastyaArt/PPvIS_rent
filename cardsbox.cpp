@@ -33,6 +33,7 @@ void CardsBox::AddCards(QList<Product> base)
     {
         ProductCard *prdCard = new ProductCard(base.at(prdId));
         cardsList.append(prdCard);
+        connect (prdCard, SIGNAL(SendProduct(QString)), this, SLOT(GetProductByArticle(QString)));
     }
 
     PlaceCards(cardsList);
@@ -98,5 +99,11 @@ void CardsBox::CreateCardsByCost(QList<Product> base, int from, int to)
     }
 
     AddCards(sortBase);
+
+}
+
+void CardsBox::GetProductByArticle(QString article)
+{
+    emit SendArticleToGetProduct(article);
 
 }

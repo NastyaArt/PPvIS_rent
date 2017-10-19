@@ -40,9 +40,13 @@ private:
 
     void GetCategories(QList<Product> base);
 
+signals:
+    void SendArticleToGetProduct(QString article);
+
 public slots:
     void GetCardsByCategory(int id);
     void GetCardsByCost();
+    void GetProductByArticle(QString article);
 
 };
 

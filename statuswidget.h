@@ -11,7 +11,12 @@ public:
 
 signals:
 
+   // void SaveOrders(); ??? сохранять в базе и оттуда же считывать (м.б. список векторов типа <QStringList articles, int numOfDays, double total>
+
 public slots:
+
+    void AddOrder(QStringList articles, int numOfDays, double total);
+    //void UploadOrders(); ???
 };
 
 #endif // STATUSWIDGET_H

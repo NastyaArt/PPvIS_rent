@@ -32,9 +32,11 @@ private:
 
 
 
-signals:
+signals:    
+    void SendArticleToGetProduct(QString article);
 
 public slots:
+    void GetProductByArticle(QString article);
 };
 
 #endif // CARDSBOX_H

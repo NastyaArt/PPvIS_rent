@@ -7,7 +7,7 @@ class StatusCard : public QWidget
 {
     Q_OBJECT
 public:
-    explicit StatusCard(QWidget *parent = 0);
+    StatusCard();
 
 signals:
 

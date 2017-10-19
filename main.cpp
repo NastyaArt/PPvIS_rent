@@ -11,6 +11,9 @@ int main(int argc, char *argv[])
     QObject::connect(&w, SIGNAL(GetDatabase()), &base, SLOT(GetDatabase()));
     QObject::connect(&base, SIGNAL(SendDatabase(QList<Product>)), &w, SLOT(UpdateCatalog(QList<Product>)));
     QObject::connect(&base, SIGNAL(Error()), &w, SLOT(ShowError()));
+    QObject::connect(&w, SIGNAL(SendArticleToGetProduct(QString)), &base, SLOT(GetProductByArticle(QString)));
+    QObject::connect(&base, SIGNAL(SendProduct(Product)), &w, SLOT(SendProduct(Product)));
+
 
     w.setMinimumSize(800, 600);
     w.GetCatalog();

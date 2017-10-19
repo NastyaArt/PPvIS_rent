@@ -29,14 +29,14 @@ private:
 
 
 signals:
-
-    void SendDatabase(QList<Product>);
+    void SendProduct(Product prd);
+    void SendDatabase(QList<Product> base);
 	void Error();
 
 private slots:
 
     void GetDatabase();
-    void GetProductByArticle();
+    void GetProductByArticle(QString article);
 
 };
 

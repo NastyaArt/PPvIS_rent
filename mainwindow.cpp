@@ -64,6 +64,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect (butCat, SIGNAL(toggled(bool)), this, SLOT(ShowCatalog(bool)));
     connect (butStat, SIGNAL(toggled(bool)), this, SLOT(ShowStatus(bool)));
     connect (butBask, SIGNAL(toggled(bool)), this, SLOT(ShowBasket(bool)));
+    connect (catalog, SIGNAL(SendArticleToGetProduct(QString)), this, SLOT(GetProductByArticle(QString)));
+  //  connect (basket, SIGNAL(GetProduct(QString)), basket, SLOT(AddProduct(QString)));
 
     butCat->toggle();
 }
@@ -71,6 +73,17 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::GetCatalog()
 {
     emit GetDatabase();
+}
+
+void MainWindow::GetProductByArticle(QString article)
+{
+    emit SendArticleToGetProduct(article);
+
+}
+
+void MainWindow::SendProduct(Product prd)
+{
+    basket->AddProductCard(prd);
 }
 
 void MainWindow::UpdateCatalog(QList<Product> base)

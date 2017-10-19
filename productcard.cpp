@@ -5,6 +5,8 @@ ProductCard::ProductCard(Product prd)
 
     setFixedSize(200, 200);
 
+    article = prd.GetArticle();
+
     lblname = new QLabel(prd.GetName());
     lblinfo = new QLabel();
     lblinfo->setText("Артикул: <b>" + prd.GetArticle() + "<br/></b>Стоимость в сутки:<br/><b>" +
@@ -30,8 +32,16 @@ ProductCard::ProductCard(Product prd)
     layCard->addWidget(butBuy);
 
     setLayout(layCard);
+
+    connect (butBuy, SIGNAL(clicked()), this, SLOT(BuyProduct()));
 }
 
+void ProductCard::BuyProduct()
+{
+    butBuy->setEnabled(false);
+    butBuy->setText("Добавлено в корзину");
+    emit SendProduct(article);
+}
 
 void ProductCard::paintEvent(QPaintEvent *)
 {
@@ -40,3 +50,4 @@ void ProductCard::paintEvent(QPaintEvent *)
 	QPainter p(this);
 	style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
+

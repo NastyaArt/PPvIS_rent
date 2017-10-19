@@ -23,6 +23,11 @@ void DatabaseProduct::ClearDatabase()
 
 void DatabaseProduct::GetDatabase()
 {
+    if (database.length()!=0){
+        emit SendDatabase(database);
+        return;
+    }
+
     bool ok = true;
     bool intOk = true;
     bool doubleOk = true;
@@ -83,7 +88,7 @@ void DatabaseProduct::GetDatabase()
         file.close();
     }
     SortByAvailable();
-	if (ok==true)
+    if (ok==true)
 		emit SendDatabase(database);
 	else
 		emit Error();
@@ -98,8 +103,16 @@ void DatabaseProduct::SortByAvailable()
               }
 }
 
-void DatabaseProduct::GetProductByArticle()
+void DatabaseProduct::GetProductByArticle(QString article)
 {
+    for (int prdId = 0; prdId < database.length(); prdId++)
+    {
+        if (database.at(prdId).GetArticle()==article)
+        {
+            emit SendProduct(database.at(prdId));
+            return;
+        }
+    }
 
 }
 

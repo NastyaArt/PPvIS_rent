@@ -8,6 +8,7 @@
 #include <QStyleOption>
 #include <QPainter>
 #include <QPushButton>
+
 #include "product.h"
 
 class BasketCard : public QWidget
@@ -19,6 +20,8 @@ public:
 private:
     QLabel *lblInfo;
     QPushButton *butDel;
+
+    void paintEvent(QPaintEvent *);
 
 signals:
 
