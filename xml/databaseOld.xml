@@ -5,174 +5,249 @@
 		<name>Наименование</name>
 		<category>Стратегические игры</category>
 		<available>1</available>
-		<cost>19.99</cost>
+		<cost>
+			<rubles>19</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
     <product>
 		<article>00002</article>
 		<name>Наименование</name>
 		<category>Игры для детей</category>
 		<available>1</available>
-		<cost>10.99</cost>
+		<cost>
+			<rubles>10</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
     <product>
 		<article>00003</article>
 		<name>Наименование</name>
 		<category>Игры для вечеринок</category>
 		<available>0</available>
-		<cost>5.49</cost>
+		<cost>
+			<rubles>5</rubles>
+			<pennies>49</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00004</article>
 		<name>Наименование</name>
 		<category>Развивающие игры</category>
 		<available>1</available>
-		<cost>10.00</cost>
+		<cost>
+			<rubles>10</rubles>
+			<pennies>00</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00005</article>
 		<name>Наименование</name>
 		<category>Стратегические игры</category>
 		<available>0</available>
-		<cost>4.99</cost>
+		<cost>
+			<rubles>4</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00006</article>
 		<name>Наименование</name>
 		<category>Игры для детей</category>
-		<available>1</available>
-		<cost>2.99</cost>
+		<available>01</available>
+		<cost>
+			<rubles>2</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>		
     <product>
 		<article>00007</article>
 		<name>Наименование</name>
 		<category>Развивающие игры</category>
 		<available>1</available>
-		<cost>19.99</cost>
+		<cost>
+			<rubles>19</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
     <product>
 		<article>00008</article>
 		<name>Наименование</name>
 		<category>Игры для вечеринок</category>
 		<available>1</available>
-		<cost>10.99</cost>
+		<cost>
+			<rubles>10</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
     <product>
 		<article>00009</article>
 		<name>Наименование</name>
 		<category>Стратегические игры</category>
 		<available>0</available>
-		<cost>5.49</cost>
+		<cost>
+			<rubles>5</rubles>
+			<pennies>49</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00010</article>
 		<name>Наименование</name>
 		<category>Игры для вечеринок</category>
 		<available>1</available>
-		<cost>10.00</cost>
+		<cost>
+			<rubles>10</rubles>
+			<pennies>00</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00011</article>
 		<name>Наименование</name>
 		<category>Стратегические игры</category>
 		<available>0</available>
-		<cost>4.99</cost>
+		<cost>
+			<rubles>4</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00012</article>
 		<name>Наименование</name>
 		<category>Игры для детей</category>
-		<available>0</available>
-		<cost>2.99</cost>
+		<available>01</available>
+		<cost>
+			<rubles>2</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
     <product>
 		<article>00013</article>
 		<name>Наименование</name>
 		<category>Тематические игры</category>
 		<available>1</available>
-		<cost>19.99</cost>
+		<cost>
+			<rubles>19</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
     <product>
 		<article>00014</article>
 		<name>Наименование</name>
 		<category>Тематические игры</category>
 		<available>1</available>
-		<cost>10.99</cost>
+		<cost>
+			<rubles>10</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
     <product>
 		<article>00015</article>
 		<name>Наименование</name>
 		<category>Игры для вечеринок</category>
 		<available>0</available>
-		<cost>5.49</cost>
+		<cost>
+			<rubles>5</rubles>
+			<pennies>49</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00016</article>
 		<name>Наименование</name>
 		<category>Стратегические игры</category>
 		<available>1</available>
-		<cost>10.00</cost>
+		<cost>
+			<rubles>10</rubles>
+			<pennies>00</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00017</article>
 		<name>Наименование</name>
 		<category>Стратегические игры</category>
 		<available>0</available>
-		<cost>4.99</cost>
+		<cost>
+			<rubles>4</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00018</article>
 		<name>Наименование</name>
 		<category>Развивающие игры</category>
-		<available>1</available>
-		<cost>2.99</cost>
+		<available>01</available>
+		<cost>
+			<rubles>2</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
     <product>
 		<article>00019</article>
 		<name>Наименование</name>
 		<category>Игры для вечеринок</category>
 		<available>1</available>
-		<cost>19.99</cost>
+		<cost>
+			<rubles>19</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
     <product>
 		<article>00020</article>
 		<name>Наименование</name>
 		<category>Стратегические игры</category>
 		<available>1</available>
-		<cost>10.99</cost>
+		<cost>
+			<rubles>10</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
     <product>
 		<article>00021</article>
 		<name>Наименование</name>
 		<category>Игры для детей</category>
 		<available>0</available>
-		<cost>5.49</cost>
+		<cost>
+			<rubles>5</rubles>
+			<pennies>49</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00022</article>
 		<name>Наименование</name>
 		<category>Развивающие игры</category>
 		<available>1</available>
-		<cost>10.00</cost>
+		<cost>
+			<rubles>10</rubles>
+			<pennies>00</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00023</article>
 		<name>Наименование</name>
 		<category>Игры для детей</category>
 		<available>0</available>
-		<cost>4.99</cost>
+		<cost>
+			<rubles>4</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
 	<product>
 		<article>00024</article>
 		<name>Наименование</name>
 		<category>Стратегические игры</category>
-		<available>1</available>
-		<cost>2.99</cost>
+		<available>01</available>
+		<cost>
+			<rubles>2</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>
 	<product>
 		<article>00025</article>
 		<name>Наименование</name>
 		<category>Игры для вечеринок</category>
-		<available>1</available>
-		<cost>19.99</cost>
+		<available>01</available>
+		<cost>
+			<rubles>2</rubles>
+			<pennies>99</pennies>
+		</cost>
 	</product>	
 </products>

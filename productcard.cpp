@@ -8,7 +8,7 @@ ProductCard::ProductCard(Product prd)
     lblname = new QLabel(prd.GetName());
     lblinfo = new QLabel();
     lblinfo->setText("Артикул: <b>" + prd.GetArticle() + "<br/></b>Стоимость в сутки:<br/><b>" +
-                  QString::number(prd.GetRubles()) + "." + QString::number(prd.GetPennies()) +
+                  QString::number(prd.GetCost(), 'f', 2) +
                   "<br/></b>Категория: <b>" + prd.GetCategory());
     lblinfo->setAlignment(Qt::AlignLeft);
     lblinfo->setWordWrap(true);
@@ -17,11 +17,11 @@ ProductCard::ProductCard(Product prd)
     butBuy->setStyleSheet("background-color : #ADD8E6");
 
     if (prd.GetAvailable()==true)
-        setStyleSheet("background-color:#BDFCC1;");
+        setStyleSheet("background-color:#7FFFD4;");
     else {
         butBuy->setEnabled(false);
         butBuy->setText("Нет в наличии");
-        setStyleSheet("background-color:#DCDCDC;");
+        setStyleSheet("background-color:#D3D3D3;");
     }
 	
     QVBoxLayout *layCard = new QVBoxLayout;

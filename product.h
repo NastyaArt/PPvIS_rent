@@ -6,22 +6,24 @@
 class Product
 {
 public:
-    Product(QString art, QString nm, QString cat, bool avlbl, int rub, int pen);
+    Product(QString art, QString nm, QString cat, bool avlbl, double cost/* int rub, int pen*/);
 
     QString GetArticle() const;
     QString GetName() const;
     QString GetCategory() const;
     bool GetAvailable() const;
-    int GetRubles() const;
-    int GetPennies() const;
+    double GetCost() const;
+//    int GetRubles() const;
+//    int GetPennies() const;
 
 private:
     QString article;
     QString name;
     QString category;
     bool available;
-    int rubles;
-    int pennies;
+    double cost;
+//    int rubles;
+//    int pennies;
 
 };
 

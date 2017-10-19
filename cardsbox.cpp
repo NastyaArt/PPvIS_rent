@@ -92,7 +92,8 @@ void CardsBox::CreateCardsByCost(QList<Product> base, int from, int to)
 
     for (int prdId=0; prdId<base.length(); prdId++)
     {
-        if (base.at(prdId).GetRubles()>=from && (base.at(prdId).GetRubles()< to || (base.at(prdId).GetRubles()<= to && base.at(prdId).GetPennies()== 0)))
+        //if (base.at(prdId).GetRubles()>=from && (base.at(prdId).GetRubles()< to || (base.at(prdId).GetRubles()<= to && base.at(prdId).GetPennies()== 0)))
+        if (base.at(prdId).GetCost()>=from && base.at(prdId).GetCost()<=to)
             sortBase.append(base.at(prdId));
     }
 

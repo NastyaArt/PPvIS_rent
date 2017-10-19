@@ -33,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     butBask ->setFixedSize(120,30);
 
     catalog = new CatalogWidget;
+     basket = new BasketWidget;
 
     QHBoxLayout *layBut = new QHBoxLayout;
     layBut->addWidget(butCat);
@@ -53,7 +54,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setCentralWidget(group);
 
-    connect (butCat, SIGNAL(clicked()), this, SLOT(GetCatalog()));
+    connect (butCat, SIGNAL(clicked()), this, SLOT(GetCatalog())); //ShowCatalog()
+    connect (butStat, SIGNAL(clicked()), this, SLOT(ShowStatus()));  //ShowStatus()
+    connect (butBask, SIGNAL(clicked()), basket, SLOT(show()));  //ShowBasket()
 }
 
 void MainWindow::GetCatalog()
@@ -70,6 +73,21 @@ void MainWindow::UpdateCatalog(QList<Product> base)
 void MainWindow::ShowError()
 {
     QMessageBox::warning(this, "Ошибка", "Не удалось загрузить базу данных", QMessageBox::Ok);
+}
+
+void MainWindow::ShowCatalog()
+{
+
+}
+
+void MainWindow::ShowStatus()
+{
+
+}
+
+void MainWindow::ShowBasket()
+{
+
 }
 
 MainWindow::~MainWindow()

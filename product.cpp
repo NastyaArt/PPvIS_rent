@@ -1,13 +1,14 @@
 #include "product.h"
 
-Product::Product(QString art, QString nm, QString cat, bool avlbl, int rub, int pen)
+Product::Product(QString art, QString nm, QString cat, bool avlbl, double cst)
 {
     article = art;
     name = nm;
     category = cat;
     available = avlbl;
-    rubles = rub;
-    pennies = pen;
+    cost = cst;
+//    rubles = rub;
+//    pennies = pen;
 }
 
 QString Product::GetArticle() const
@@ -30,6 +31,12 @@ bool Product::GetAvailable() const
     return available;
 }
 
+double Product::GetCost() const
+{
+    return cost;
+}
+
+/*
 int Product::GetRubles() const
 {
     return rubles;
@@ -39,3 +46,4 @@ int Product::GetPennies() const
 {
     return pennies;
 }
+*/

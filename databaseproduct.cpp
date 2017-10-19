@@ -5,9 +5,9 @@ DatabaseProduct::DatabaseProduct()
 
 }
 
-void DatabaseProduct::AddProduct(QString art, QString name, QString categ, bool avail, int rub, int pen)
+void DatabaseProduct::AddProduct(QString art, QString name, QString categ, bool avail, double cst)
 {
-	Product prd(art, name, categ, avail, rub, pen);
+    Product prd(art, name, categ, avail, cst);
     database.append(prd);
 }
 
@@ -25,13 +25,13 @@ void DatabaseProduct::GetDatabase()
 {
     bool ok = true;
     bool intOk = true;
+    bool doubleOk = true;
 	
     QString art;
     QString name;
     QString categ;
     bool avail;
-    int rub;
-    int pen;
+    double cost;
 	
 	database.clear();
     
@@ -54,8 +54,7 @@ void DatabaseProduct::GetDatabase()
                     name = ("");
                     categ = ("");
                     avail = 0;
-                    rub = 0;
-					pen = 0;
+                    cost = 0.0;
 					xmlReader.readNext();
                 }
                 if (xmlReader.name() == "article"){
@@ -73,16 +72,10 @@ void DatabaseProduct::GetDatabase()
                 if (xmlReader.name() == "available"){
                     avail=xmlReader.readElementText().toInt(&intOk, 10);
 					xmlReader.readNext();
-				}
-				if (xmlReader.name() == "cost")
-					xmlReader.readNext();
-                if (xmlReader.name() == "rubles"){
-					rub=xmlReader.readElementText().toInt(&intOk, 10);
-					xmlReader.readNext();
-				}
-                if (xmlReader.name() == "pennies"){
-                    pen=xmlReader.readElementText().toInt(&intOk, 10);
-                    AddProduct(art, name, categ, avail, rub, pen);
+				}				
+                if (xmlReader.name() == "cost"){
+                    cost=xmlReader.readElementText().toDouble(&doubleOk);
+                    AddProduct(art, name, categ, avail, cost);
                 }
            }
            xmlReader.readNext();

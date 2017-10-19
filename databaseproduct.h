@@ -19,7 +19,7 @@ public:
 private:
 
     QList<Product> database;
-    void AddProduct(QString art, QString name, QString categ, bool avail, int rub, int pen);
+    void AddProduct(QString art, QString name, QString categ, bool avail, double cst);
     void AddProduct(Product prd);
     void ClearDatabase();
     void SortByAvailable();

@@ -20,11 +20,12 @@ private:
 
     QStringList cardsArticles; //список артикулов
 
-    QVBoxLayout *layBask;
+    QVBoxLayout *layCards;
     QScrollArea *scrollArea;
     QGroupBox *cardsBox;
     QGroupBox *payBox;
     const int cardsDist = 10;
+    const int maxNumOfDays = 3;
     QPushButton *butPay;
     QLabel *lblnumOfDays;
     QLineEdit *lnnumOfDays;
@@ -32,7 +33,7 @@ private:
 
 signals:
     void GetProductByArticle(QString article);
-    void OrderHasBeenPaid(QStringList articles, double cost, int days);
+    void OrderHasBeenPaid(QStringList articles, int numOfDays, double total);
 
 public slots:
 

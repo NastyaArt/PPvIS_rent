@@ -14,7 +14,7 @@ class BasketCard : public QWidget
 {
     Q_OBJECT
 public:
-    BasketCard(Product prd, int numDays);
+    BasketCard(Product prd);
 
 private:
     QLabel *lblInfo;

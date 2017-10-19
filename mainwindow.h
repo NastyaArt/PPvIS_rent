@@ -37,6 +37,7 @@ private:
     QLabel *lblName;
 
     CatalogWidget *catalog;
+    BasketWidget *basket;
 
     QPushButton *butCat;
  //   QPushButton *butInf;
@@ -53,6 +54,10 @@ private slots:
     void UpdateCatalog(QList<Product> base);
     void ShowError();
     void GetCatalog();
+
+    void ShowCatalog();
+    void ShowStatus();
+    void ShowBasket();
 
 };
 
