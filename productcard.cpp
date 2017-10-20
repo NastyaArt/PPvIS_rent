@@ -6,6 +6,8 @@ ProductCard::ProductCard(Product prd)
     setFixedSize(200, 200);
 
     article = prd.GetArticle();
+    category = prd.GetCategory();
+    cost = prd.GetCost();
 
     lblname = new QLabel(prd.GetName());
     lblinfo = new QLabel();

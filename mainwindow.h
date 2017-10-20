@@ -59,7 +59,7 @@ public slots:
     void ShowError();
     void GetCatalog();
     void GetProductByArticle(QString article);
-    void SendProduct(Product prd);
+    void SendProductToBasket(Product prd);
 
     void ShowCatalog(bool on);
     void ShowStatus(bool on);

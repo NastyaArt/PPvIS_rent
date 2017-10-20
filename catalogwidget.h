@@ -24,6 +24,7 @@ private:
     QGroupBox *boxSearch;
 
     QGroupBox *boxCat;
+    QVBoxLayout *layCateg;
     QStringList listCateg;
     QButtonGroup *btGrCateg;
 

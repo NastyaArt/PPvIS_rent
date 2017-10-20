@@ -18,8 +18,8 @@ public:
     BasketCard(Product prd);
 
 private:
+    QString article;
     QLabel *lblInfo;
-    QPushButton *butDel;
 
     void paintEvent(QPaintEvent *);
 

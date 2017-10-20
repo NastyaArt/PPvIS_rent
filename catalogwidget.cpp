@@ -9,6 +9,9 @@ CatalogWidget::CatalogWidget()
     cardsBox = new CardsBox;
 
     boxCat = new QGroupBox("Категория");
+    layCateg = new QVBoxLayout;
+    boxCat->setLayout(layCateg);
+    layCateg->setAlignment(Qt::AlignTop);
 
     rbutCateg = new QList<QRadioButton*>;
     btGrCateg = new QButtonGroup;
@@ -62,6 +65,11 @@ void CatalogWidget::CreateCatalog(QList<Product> base)
 
     GetCategories(base);
 
+    while (QLayoutItem* item = layCateg->takeAt(0)) {
+            delete item->widget();
+            delete item;
+        }
+
     rbutCateg->clear();
 
     for (int butId = 0; butId < btGrCateg->buttons().length(); butId++) {
@@ -76,12 +84,17 @@ void CatalogWidget::CreateCatalog(QList<Product> base)
         btGrCateg->addButton(rbutCateg->at(categId));
     }
 
-    QVBoxLayout *layCateg = new QVBoxLayout;
     for (int butId = 0; butId < rbutCateg->length(); butId++) {
         layCateg->addWidget(rbutCateg->at(butId));
     }
-    layCateg->setAlignment(Qt::AlignTop);
-    boxCat->setLayout(layCateg);
+
+
+  /*  while (QLayoutItem* item = boxCat->layout()->takeAt(0)) {
+        delete item->widget();
+        delete item;
+    }
+    boxCat->layout()->addWidget();
+   */
 
     btGrCateg->button(-2)->setChecked(true);
 }

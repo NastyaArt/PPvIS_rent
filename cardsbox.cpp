@@ -3,6 +3,8 @@
 CardsBox::CardsBox()
 {
 
+    cardsList =  new QList<ProductCard*>;
+
     cardsBox = new QGroupBox;
     cardsBox->setFixedSize(1050, 573);  //5*(размер одной карточки + немного) - ширина, а по высоте сделать прокрутку
     cardsBox->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
@@ -22,48 +24,52 @@ CardsBox::CardsBox()
 
 void CardsBox::CreateCards(QList<Product> base)
 {
+     cardsList->clear();
      AddCards(base);
 }
 
 void CardsBox::AddCards(QList<Product> base)
 {
-    QList<ProductCard*> cardsList;
+   // QList<ProductCard*> cardsList;
 
     for (int prdId=0; prdId<base.length(); prdId++)
     {
         ProductCard *prdCard = new ProductCard(base.at(prdId));
-        cardsList.append(prdCard);
+        cardsList->append(prdCard);
         connect (prdCard, SIGNAL(SendProduct(QString)), this, SLOT(GetProductByArticle(QString)));
     }
 
     PlaceCards(cardsList);
 }
 
-void CardsBox::PlaceCards(QList<ProductCard*> cardsList)
+void CardsBox::PlaceCards(QList<ProductCard*> *cardsList)
 {
-    if (cardsList.length()==0)
+    if (cardsList->length()==0)
         return;
 
-    while (QLayoutItem* item = layPr->takeAt(0)) {        
+    while (QLayoutItem* item = layPr->takeAt(0)) {
         while (QLayoutItem* item1 = item->layout()->takeAt(0)) {
-            delete item1->widget();
+           // delete item1->widget();
+          //  item1->widget()->hide();
             delete item1;
         }
         delete item;
     }
 
-    for (int cardId=0; cardId<cardsList.length(); cardId++){
+    for (int cardId=0; cardId<cardsList->length(); cardId++){
         QHBoxLayout *layRow = new QHBoxLayout;
         layRow->setAlignment(Qt::AlignTop);
         for (int cardInRowId=0; cardInRowId<cardsInRow; cardInRowId++)
-            if ((cardId+cardInRowId)<cardsList.length())
-                layRow->addWidget(cardsList.at(cardId+cardInRowId));
+        {
+            if ((cardId+cardInRowId)<cardsList->length())
+                layRow->addWidget(cardsList->at(cardId+cardInRowId));
+        }
         cardId=cardId+cardsInRow-1;
         layPr->addLayout(layRow);
     }
-    //переделать вычисление размеров
-    int boxHeight = layPr->count()*(cardsList.at(0)->height()+cardsDist);
-//    int boxHeight = cardsList.length()/cardsInRow*cardsList.at(0)->height()+(cardsList.length()/cardsInRow+1)*cardsDist;
+
+    int boxHeight = layPr->count()*(cardsList->at(0)->height()+cardsDist);
+
     if (boxHeight > scrollArea->height())
         cardsBox->setFixedHeight(boxHeight);
     else
@@ -84,6 +90,22 @@ void CardsBox::CreateCardsByCategory(QList<Product> base, QString categ)
                 sortBase.append(base.at(prdId));
         }
     AddCards(sortBase);
+    }
+}
+
+void CardsBox::ShowCardsByCategory(QString categ)
+{
+    QList<ProductCard*> *sortCards;
+    if (categ == "Все категории")
+         PlaceCards(cardsList);
+    else
+    {
+        for (int cardId=0; cardId<cardsList->length(); cardId++)
+        {
+            if (cardsList->at(cardId)->category==categ)
+                sortCards->append(cardsList->at(cardId));
+        }
+    PlaceCards(sortCards);
     }
 }
 

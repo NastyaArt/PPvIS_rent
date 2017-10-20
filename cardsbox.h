@@ -16,9 +16,11 @@ public:
     void CreateCards(QList<Product> base);
     void CreateCardsByCategory(QList<Product> base, QString categ);
     void CreateCardsByCost(QList<Product> base, int from, int to);
+    void ShowCardsByCategory(QString categ);
 
 private:
 
+    QList<ProductCard*> *cardsList;
     QVBoxLayout *layPr;
     QScrollArea *scrollArea;
     QGroupBox *cardsBox;
@@ -28,7 +30,7 @@ private:
 
 
     void AddCards(QList<Product> base);
-    void PlaceCards(QList<ProductCard*> cardsList);
+    void PlaceCards(QList<ProductCard*> *cardsList);
 
 
 
@@ -37,6 +39,7 @@ signals:
 
 public slots:
     void GetProductByArticle(QString article);
+
 };
 
 #endif // CARDSBOX_H

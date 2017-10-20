@@ -17,9 +17,13 @@ class ProductCard : public QWidget
 public:
     ProductCard(Product prd);
 
+    QString article;
+    QString category;
+    double cost;
+
 private:
 
-    QString article;
+
     QLabel *lblname;
     QLabel *lblinfo;
     QPushButton *butBuy;
