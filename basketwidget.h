@@ -53,6 +53,7 @@ public slots:
    // void AddProduct(QString article);
     void AddProductCard(Product prd);
     void ClearBasket();
+    void SetNumOfDays(QString text);
 
     QStringList GetProductInBasket();
 };

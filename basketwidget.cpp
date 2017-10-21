@@ -2,7 +2,8 @@
 
 BasketWidget::BasketWidget()
 {
-
+    sum = 0.0;
+    numOfDays = maxNumOfDays;
     baskIsEmpty = new QLabel("Корзина пуста");
     baskIsEmpty->setStyleSheet("background-color:#E6E6FA;  font-size: 24pt;");
     baskIsEmpty->setAlignment(Qt::AlignCenter);
@@ -62,6 +63,7 @@ BasketWidget::BasketWidget()
 
     connect (butPay, SIGNAL(clicked()), this, SLOT(ButPayOrder()));
     connect (butClear, SIGNAL(clicked()), this, SLOT(ClearBasket()));
+    connect (lnnumOfDays, SIGNAL(textChanged(QString)), this, SLOT(SetNumOfDays(QString)));
 }
 /*
 void BasketWidget::AddProduct(QString article)
@@ -88,6 +90,7 @@ void BasketWidget::AddProductCard(Product prd)
     int numOfDays;
     double totalCost;
     */
+    SetNumOfDays(lnnumOfDays->text());
 }
 
 void BasketWidget::ClearBasket()
@@ -129,6 +132,8 @@ void BasketWidget::ButPayOrder()
     cardsBox->setFixedHeight(scrollArea->height()-2);
     emit OrderHasBeenPaid(cardsArticles, 3, 20.0);
     emit UploadCatalog();
+//изменить на использование функции очистки корзины
+    sum = 0.0;
 
     cardsArticles.clear();
 
@@ -139,3 +144,21 @@ QStringList BasketWidget::GetProductInBasket()
     return cardsArticles;
 }
 
+void BasketWidget::SetNumOfDays(QString text)
+{
+    bool ok = true;
+    int days = text.toInt(&ok, 10);
+    if (text==NULL || ok==false){
+        QMessageBox::warning(this, "Неправильно введены данные", "Введите количество дней от 1 до 3!", QMessageBox::Ok);
+        return;
+    }
+
+    if (days>maxNumOfDays || days<=0){
+        QMessageBox::warning(this, "Неправильно введены данные", "Количество дней не может быть больше <b>3 дней</b>!", QMessageBox::Ok);
+        return;
+    }
+    numOfDays = days;
+    totalCost = sum * numOfDays;
+    lbltotalSum->setText(QString::number(totalCost, 'f', 2));
+
+}
