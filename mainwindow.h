@@ -30,12 +30,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-private:
-    Ui::MainWindow *ui;
-
     CatalogWidget *catalog;
     StatusWidget *status;
     BasketWidget *basket;
+
+private:
+    Ui::MainWindow *ui;    
 
     QStackedWidget *pages;
 
@@ -50,16 +50,9 @@ private:
 
 signals:
 
-    void SendArticleToGetProduct(QString article);
-    void GetDatabase();
-
 public slots:
 
-    void UpdateCatalog(QList<Product> base);
     void ShowError();
-    void GetCatalog();
-    void GetProductByArticle(QString article);
-    void SendProductToBasket(Product prd);
 
     void ShowCatalog(bool on);
     void ShowStatus(bool on);

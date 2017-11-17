@@ -21,7 +21,9 @@ public:
     BasketWidget();
 private:
 
-    QStringList cardsArticles; //список артикулов
+    double sumCost;
+    double totalCost;
+    int numOfDays;
 
     QVBoxLayout *layCards;
     QScrollArea *scrollArea;
@@ -31,9 +33,7 @@ private:
     QLabel *baskIsEmpty;
     const int cardsDist = 10;
     const int maxNumOfDays = 3;
-    double sum;
-    double totalCost;
-    int numOfDays;
+
     QPushButton *butPay;
     QPushButton *butClear;
     QLabel *lblnumOfDays;
@@ -43,19 +43,15 @@ private:
 
 
 signals:
-    void GetProductByArticle(QString article);
-    void OrderHasBeenPaid(QStringList articles, int numOfDays, double total);
-    void UploadCatalog();
+    void OrderHasBeenPaid(int numOfDays, double total);
+    void ClearOrder();
 
 public slots:
 
     void ButPayOrder();
-   // void AddProduct(QString article);
-    void AddProductCard(Product prd);
+    void AddProductCard(Product *prd);
     void ClearBasket();
     void SetNumOfDays(QString text);
-
-    QStringList GetProductInBasket();
 };
 
 #endif // BASKETWIDGET_H

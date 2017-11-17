@@ -8,21 +8,20 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QLineEdit>
-#include "cardsbox.h"
+#include <QList>
+#include <QScrollArea>
+#include "productcard.h"
 
 class CatalogWidget : public QWidget
 {
     Q_OBJECT
 public:
     CatalogWidget();
-    void CreateCatalog(QList<Product> base);
-    QList<Product> database;
+
 
 private:
-    CardsBox *cardsBox;
 
     QGroupBox *boxSearch;
-
     QGroupBox *boxCat;
     QVBoxLayout *layCateg;
     QStringList listCateg;
@@ -37,17 +36,29 @@ private:
     QPushButton *butSearchByCost;
 
     QList<QRadioButton*> *rbutCateg;
-    QList<ProductCard> cards;
 
-    void GetCategories(QList<Product> base);
+    QGroupBox *cardsBox;
+    QVBoxLayout *layPr;
+    QScrollArea *scrollArea;    
+    const int cardsDist = 10;
+    const int cardsInRow = 5;
+
+    void GetCategories(QList<Product*> base);
+    void PlaceCards(QList<ProductCard*> *cardsList);
 
 signals:
-    void SendArticleToGetProduct(QString article);
+    void GetProductsByCategory(QString cat);
+    void GetProductsByCost(int from, int to);
+    void GetDatabase();
+    void SendProductToOrder(QString art);
 
 public slots:
+
+    void CreateCatalog(QList<Product*> base);
+    void CreateCards(QList<Product*> base);
     void GetCardsByCategory(int id);
     void GetCardsByCost();
-    void GetProductByArticle(QString article);
+    void GetProductToOrder(QString art);
 
 };
 

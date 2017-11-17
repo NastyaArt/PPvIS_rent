@@ -2,16 +2,16 @@
 
 DatabaseProduct::DatabaseProduct()
 {
-
+    order = new Order;
 }
 
 void DatabaseProduct::AddProduct(QString art, QString name, QString categ, bool avail, double cst)
 {
-    Product prd(art, name, categ, avail, cst);
+    Product *prd = new Product(art, name, categ, avail, cst);
     database.append(prd);
 }
 
-void DatabaseProduct::AddProduct(Product prd)
+void DatabaseProduct::AddProduct(Product *prd)
 {
         database.append(prd);
 }
@@ -38,7 +38,7 @@ void DatabaseProduct::GetDatabase()
     bool avail;
     double cost;
 	
-	database.clear();
+    ClearDatabase();
     
     QFile file(filename);
     if (!file.open(QFile::ReadOnly | QFile::Text))
@@ -98,22 +98,76 @@ void DatabaseProduct::SortByAvailable()
 {
     for (int prd1Id = 0; prd1Id <database.length()-1; prd1Id++)
           for (int prd2Id = prd1Id+1; prd2Id < database.length(); prd2Id++)
-                  if (database.at(prd1Id).GetAvailable() < database.at(prd2Id).GetAvailable()) {
+                  if (database.at(prd1Id)->GetAvailable() < database.at(prd2Id)->GetAvailable()) {
                   database.swap(prd1Id, prd2Id);
               }
 }
 
-void DatabaseProduct::GetProductByArticle(QString article)
+
+
+void DatabaseProduct::GetProductsByCategory(QString cat)
 {
+    QList<Product*> base;
+    if (cat=="Все категории")
+        emit SendProducts(database);
+    else{
+        for (int prdId = 0; prdId < database.length(); prdId++)
+        {
+            if (database.at(prdId)->GetCategory()==cat)
+            {
+                base.append(database.at(prdId));
+            }
+        }
+        emit SendProducts(base);
+    }
+
+}
+
+void DatabaseProduct::GetProductsByCost(int from, int to)
+{
+    QList<Product*> base;
     for (int prdId = 0; prdId < database.length(); prdId++)
     {
-        if (database.at(prdId).GetArticle()==article)
+        if (database.at(prdId)->GetCost()>=from && database.at(prdId)->GetCost()<=to)
         {
-            emit SendProduct(database.at(prdId));
+            base.append(database.at(prdId));
+        }
+    }
+    emit SendProducts(base);
+}
+
+void DatabaseProduct::ClearOrder()
+{
+    order->Clear();
+    for (int prdId = 0; prdId < database.length(); prdId++)
+    {
+        database.at(prdId)->SetInOrder(false);
+    }
+    emit SendDatabase(database);
+}
+
+void DatabaseProduct::AddProductToOrder(QString art)
+{
+    order->AddProduct(art);
+    for (int prdId = 0; prdId < database.length(); prdId++)
+    {
+        if (database.at(prdId)->GetArticle()==art)
+        {
+            database.at(prdId)->SetInOrder(true);
+            emit SendProductToBasket(database.at(prdId));
             return;
         }
     }
 
 }
 
+void DatabaseProduct::OrderHasBeenPaid(int days, double cost)
+{
+    order->SetDate(QDate::currentDate());
+    order->SetDays(days);
+    order->SetTotalCost(cost);
+    emit SendOrderToStatus(order);
+    ClearOrder();
+
+}
 

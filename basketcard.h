@@ -15,10 +15,9 @@ class BasketCard : public QWidget
 {
     Q_OBJECT
 public:
-    BasketCard(Product prd);
+    BasketCard(Product *prd);
 
 private:
-    QString article;
     QLabel *lblInfo;
 
     void paintEvent(QPaintEvent *);

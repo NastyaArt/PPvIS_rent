@@ -8,14 +8,14 @@
 #include <QStyleOption>
 #include <QPainter>
 #include <QDate>
-#include "product.h"
+#include "order.h"
 
 class StatusCard : public QWidget
 {
     Q_OBJECT
 public:
- //   StatusCard(QList<Product> prds, int days, double total);
-    StatusCard(QStringList articles, int days, double total);
+
+    StatusCard(Order *ord);
 
 private:
 

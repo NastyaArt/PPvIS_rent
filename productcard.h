@@ -15,14 +15,11 @@ class ProductCard : public QWidget
 {
     Q_OBJECT
 public:
-    ProductCard(Product prd);
+    ProductCard(Product *prd);
 
     QString article;
-    QString category;
-    double cost;
 
 private:
-
 
     QLabel *lblname;
     QLabel *lblinfo;

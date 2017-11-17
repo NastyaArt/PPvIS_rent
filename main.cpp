@@ -8,15 +8,26 @@ int main(int argc, char *argv[])
     DatabaseProduct base;
     MainWindow w;
 
-    QObject::connect(&w, SIGNAL(GetDatabase()), &base, SLOT(GetDatabase()));
-    QObject::connect(&base, SIGNAL(SendDatabase(QList<Product>)), &w, SLOT(UpdateCatalog(QList<Product>)));
+
+    QObject::connect(w.catalog, SIGNAL(GetDatabase()), &base, SLOT(GetDatabase()));
+    QObject::connect(&base, SIGNAL(SendDatabase(QList<Product*>)), w.catalog, SLOT(CreateCatalog(QList<Product*>)));
+    QObject::connect (w.catalog, SIGNAL(GetProductsByCategory(QString)), &base, SLOT(GetProductsByCategory(QString)));
+    QObject::connect (w.catalog, SIGNAL(GetProductsByCost(int, int)), &base, SLOT(GetProductsByCost(int, int)));
+    QObject::connect(&base, SIGNAL(SendProducts(QList<Product*>)), w.catalog, SLOT(CreateCards(QList<Product*>)));
+    QObject::connect (w.catalog, SIGNAL(SendProductToOrder(QString)), &base, SLOT(AddProductToOrder(QString)));
+
     QObject::connect(&base, SIGNAL(Error()), &w, SLOT(ShowError()));
-    QObject::connect(&w, SIGNAL(SendArticleToGetProduct(QString)), &base, SLOT(GetProductByArticle(QString)));
-    QObject::connect(&base, SIGNAL(SendProduct(Product)), &w, SLOT(SendProductToBasket(Product)));
+
+
+    QObject::connect(&base, SIGNAL(SendProductToBasket(Product*)), w.basket, SLOT(AddProductCard(Product*)));
+    QObject::connect (w.basket, SIGNAL(ClearOrder()), &base, SLOT(ClearOrder()));
+    QObject::connect (w.basket, SIGNAL(OrderHasBeenPaid(int,double)), &base, SLOT(OrderHasBeenPaid(int, double)));
+
+    QObject::connect(&base, SIGNAL(SendOrderToStatus(Order*)), w.status, SLOT(AddOrder(Order*)));
 
 
     w.setMinimumSize(800, 600);
-    w.GetCatalog();
+    w.catalog->GetDatabase();
 
     QPalette p = w.palette();
     QRect rect = QApplication::desktop()->screenGeometry();

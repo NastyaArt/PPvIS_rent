@@ -2,13 +2,12 @@
 
 BasketWidget::BasketWidget()
 {
-    sum = 0.0;
+    sumCost = 0.00;
     numOfDays = maxNumOfDays;
     baskIsEmpty = new QLabel("Корзина пуста");
     baskIsEmpty->setStyleSheet("background-color:#E6E6FA;  font-size: 24pt;");
     baskIsEmpty->setAlignment(Qt::AlignCenter);
 
-    //QStringList cardsArticles ;
     cardsBox = new QGroupBox;
     cardsBox->setFixedSize(1320, 573);
     cardsBox->setStyleSheet("background-color : rgba(127, 255, 212, 0.4);");
@@ -65,18 +64,11 @@ BasketWidget::BasketWidget()
     connect (butClear, SIGNAL(clicked()), this, SLOT(ClearBasket()));
     connect (lnnumOfDays, SIGNAL(textChanged(QString)), this, SLOT(SetNumOfDays(QString)));
 }
-/*
-void BasketWidget::AddProduct(QString article)
-{
-    cardsArticles->append(article);
-    emit GetProductByArticle(article);
-}
-*/
-void BasketWidget::AddProductCard(Product prd)
+
+void BasketWidget::AddProductCard(Product *prd)
 {
     boxTotal->show();
     baskIsEmpty->hide();
-    cardsArticles.append(prd.GetArticle());
     BasketCard *card = new BasketCard(prd);
     layCards->addWidget(card);
     int boxHeight = (layCards->count())*(card->height()+cardsDist)+70;
@@ -84,12 +76,8 @@ void BasketWidget::AddProductCard(Product prd)
         cardsBox->setFixedHeight(boxHeight);
     else
         cardsBox->setFixedHeight(scrollArea->height()-2);
-    sum+=prd.GetCost();
-   // lbltotalSum->setText(QString::number(sum*numDays));
-  /*
-    int numOfDays;
-    double totalCost;
-    */
+    sumCost+=prd->GetCost();
+
     SetNumOfDays(lnnumOfDays->text());
 }
 
@@ -98,67 +86,47 @@ void BasketWidget::ClearBasket()
     boxTotal->hide();
     baskIsEmpty->show();
 
-    cardsArticles.clear();
-    sum = 0.0;
+    sumCost = 0.00;
 
     while (QLayoutItem* item = layCards->takeAt(0)) {
         delete item->widget();
         delete item;
     }
     cardsBox->setFixedHeight(scrollArea->height()-2);
-    emit UploadCatalog();
+    emit ClearOrder();
 }
 
 void BasketWidget::ButPayOrder()
 {
-    bool ok = true;
-    int days = lnnumOfDays->text().toInt(&ok, 10);
-    if (lnnumOfDays->text()==NULL || ok==false){
+    if (lnnumOfDays->text()==NULL){
         QMessageBox::warning(this, "Неправильно введены данные", "Введите количество дней от 1 до 3!", QMessageBox::Ok);
         return;
-    }
-
-    if (days>maxNumOfDays || days<=0){
-        QMessageBox::warning(this, "Неправильно введены данные", "Количество дней не может быть больше <b>3 дней</b>!", QMessageBox::Ok);
-        return;
-    }
-
-    while (QLayoutItem* item = layCards->takeAt(0)) {
-        delete item->widget();
-        delete item;
-    }
-    boxTotal->hide();
-    baskIsEmpty->show();
-    cardsBox->setFixedHeight(scrollArea->height()-2);
-    emit OrderHasBeenPaid(cardsArticles, 3, 20.0);
-    emit UploadCatalog();
-//изменить на использование функции очистки корзины
-    sum = 0.0;
-
-    cardsArticles.clear();
-
-}
-
-QStringList BasketWidget::GetProductInBasket()
-{
-    return cardsArticles;
+    }    
+    emit OrderHasBeenPaid(numOfDays, totalCost);
+    ClearBasket();
 }
 
 void BasketWidget::SetNumOfDays(QString text)
 {
     bool ok = true;
     int days = text.toInt(&ok, 10);
-    if (text==NULL || ok==false){
+    if (text==NULL){
+        lbltotalSum->setText("0.00");
+        return;
+    }
+    if (ok==false){
         QMessageBox::warning(this, "Неправильно введены данные", "Введите количество дней от 1 до 3!", QMessageBox::Ok);
+        lnnumOfDays->setText("");
         return;
     }
 
     if (days>maxNumOfDays || days<=0){
         QMessageBox::warning(this, "Неправильно введены данные", "Количество дней не может быть больше <b>3 дней</b>!", QMessageBox::Ok);
+        lnnumOfDays->setText("");
         return;
     }
     numOfDays = days;
-    totalCost = sum * numOfDays;
+    totalCost = sumCost * numOfDays;
     lbltotalSum->setText(QString::number(totalCost, 'f', 2));
 
 }

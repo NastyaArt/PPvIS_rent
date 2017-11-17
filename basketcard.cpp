@@ -1,16 +1,14 @@
 #include "basketcard.h"
 
-BasketCard::BasketCard(Product prd)
+BasketCard::BasketCard(Product *prd)
 {
     setFixedSize(400, 100);
     setStyleSheet("background-color:#7FFFD4; font-size: 11pt;");
 
-    article=prd.GetArticle();
-
-    lblInfo = new QLabel("Наименование: " +  prd.GetName() +
-                         "<br/>Артикул: " + prd.GetArticle()+
+    lblInfo = new QLabel("Наименование: " +  prd->GetName() +
+                         "<br/>Артикул: " + prd->GetArticle()+
                          "<br/></b>Стоимость в сутки:<br/><b>" +
-                         QString::number(prd.GetCost(), 'f', 2));
+                         QString::number(prd->GetCost(), 'f', 2));
 
     QVBoxLayout *layCard = new QVBoxLayout;
     layCard->addWidget(lblInfo);

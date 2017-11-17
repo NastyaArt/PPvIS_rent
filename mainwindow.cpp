@@ -64,35 +64,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect (butCat, SIGNAL(toggled(bool)), this, SLOT(ShowCatalog(bool)));
     connect (butStat, SIGNAL(toggled(bool)), this, SLOT(ShowStatus(bool)));
     connect (butBask, SIGNAL(toggled(bool)), this, SLOT(ShowBasket(bool)));
-    connect (catalog, SIGNAL(SendArticleToGetProduct(QString)), this, SLOT(GetProductByArticle(QString)));
-  //  connect (status, SIGNAL(SendArticlesToGetProducts(QStringList)), this, SLOT(GetProductsByArticles(QStringList)));
-
-    connect (basket, SIGNAL(OrderHasBeenPaid(QStringList,int,double)), status, SLOT(AddOrder(QStringList,int,double)));
-
-    connect (basket, SIGNAL(UploadCatalog()), this, SLOT(GetCatalog()));
 
     butCat->toggle();
-}
-
-void MainWindow::GetCatalog()
-{
-    emit GetDatabase();
-}
-
-void MainWindow::GetProductByArticle(QString article)
-{
-    emit SendArticleToGetProduct(article);
-
-}
-
-void MainWindow::SendProductToBasket(Product prd)
-{
-    basket->AddProductCard(prd);
-}
-
-void MainWindow::UpdateCatalog(QList<Product> base)
-{
-    catalog->CreateCatalog(base);
 }
 
 void MainWindow::ShowError()

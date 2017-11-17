@@ -7,8 +7,7 @@ Product::Product(QString art, QString nm, QString cat, bool avlbl, double cst)
     category = cat;
     available = avlbl;
     cost = cst;
-//    rubles = rub;
-//    pennies = pen;
+    inOrder = false;
 }
 
 QString Product::GetArticle() const
@@ -36,14 +35,12 @@ double Product::GetCost() const
     return cost;
 }
 
-/*
-int Product::GetRubles() const
+bool Product::GetInOrder() const
 {
-    return rubles;
+    return inOrder;
 }
 
-int Product::GetPennies() const
+void Product::SetInOrder(bool ok)
 {
-    return pennies;
+    inOrder=ok;
 }
-*/

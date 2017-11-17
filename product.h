@@ -6,15 +6,15 @@
 class Product
 {
 public:
-    Product(QString art, QString nm, QString cat, bool avlbl, double cost/* int rub, int pen*/);
+    Product(QString art, QString nm, QString cat, bool avlbl, double cost);
 
     QString GetArticle() const;
     QString GetName() const;
     QString GetCategory() const;
     bool GetAvailable() const;
     double GetCost() const;
-//    int GetRubles() const;
-//    int GetPennies() const;
+    bool GetInOrder() const;
+    void SetInOrder(bool ok);
 
 private:
     QString article;
@@ -22,9 +22,7 @@ private:
     QString category;
     bool available;
     double cost;
-//    int rubles;
-//    int pennies;
-
+    bool inOrder;
 };
 
 #endif // PRODUCT_H

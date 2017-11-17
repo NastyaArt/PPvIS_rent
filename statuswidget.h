@@ -12,6 +12,7 @@
 #include <QMessageBox>
 #include "statuscard.h"
 
+
 class StatusWidget : public QWidget
 {
     Q_OBJECT
@@ -19,21 +20,18 @@ public:
     StatusWidget();
 
 private:
-   // QStringList *cardsArticles; //список артикулов (список заказов)
 
     QVBoxLayout *layCards;
     QScrollArea *scrollArea;
     QGroupBox *cardsBox;
     const int cardsDist = 10;
+    int boxHeight;
 signals:
-
-    void SendArticlesToGetProducts(QStringList articles);
-   // void SaveOrders(); ??? сохранять в базе и оттуда же считывать (м.б. список векторов типа <QStringList articles, int numOfDays, double total>
 
 public slots:
 
-    void AddOrder(QStringList articles, int numOfDays, double total);
-    //void UploadOrders(); ???
+    void AddOrder(Order *ord);
+
 };
 
 #endif // STATUSWIDGET_H
