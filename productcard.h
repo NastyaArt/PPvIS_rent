@@ -17,20 +17,19 @@ class ProductCard : public QWidget
 public:
     ProductCard(Product *prd);
 
-    QString article;
-
 private:
 
+    QString article;
     QLabel *lblname;
     QLabel *lblinfo;
     QPushButton *butBuy;
 	
-	void paintEvent(QPaintEvent *);
+    void paintEvent(QPaintEvent *);
 
 signals:
     void SendProduct(QString article);
 
-public slots:
+private slots:
     void BuyProduct();
 };
 

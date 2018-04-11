@@ -32,19 +32,20 @@ private:
     QLabel *ldlCostFrom;
     QLineEdit *lineCostFrom;
     QLabel *lblCostTo;
-    QLineEdit*lineCostTo;
+    QLineEdit *lineCostTo;
     QPushButton *butSearchByCost;
 
     QList<QRadioButton*> *rbutCateg;
 
     QGroupBox *cardsBox;
     QVBoxLayout *layPr;
-    QScrollArea *scrollArea;    
+    QScrollArea *scrollArea;
     const int cardsDist = 10;
     const int cardsInRow = 5;
 
     void GetCategories(QList<Product*> base);
     void PlaceCards(QList<ProductCard*> *cardsList);
+    void ClearCatalog();
 
 signals:
     void GetProductsByCategory(QString cat);

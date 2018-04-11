@@ -120,13 +120,7 @@ void CatalogWidget::CreateCards(QList<Product*> base)
 
 void CatalogWidget::PlaceCards(QList<ProductCard*> *cardsList)
 {
-    while (QLayoutItem* item = layPr->takeAt(0)) {
-        while (QLayoutItem* item1 = item->layout()->takeAt(0)) {     
-                delete item1->widget();
-                delete item1;
-        }
-        delete item;
-    }
+    ClearCatalog();
 
     if (cardsList->length()==0)
         return;
@@ -187,4 +181,16 @@ void CatalogWidget::GetCardsByCost()
 void CatalogWidget::GetProductToOrder(QString art)
 {
     emit SendProductToOrder(art);
+}
+
+void CatalogWidget::ClearCatalog()
+{
+    while (QLayoutItem* item = layPr->takeAt(0)) {
+        while (QLayoutItem* item1 = item->layout()->takeAt(0)) {
+                delete item1->widget();
+                delete item1;
+        }
+        delete item;
+    }
+
 }

@@ -103,7 +103,17 @@ void BasketWidget::ButPayOrder()
         return;
     }    
     emit OrderHasBeenPaid(numOfDays, totalCost);
-    ClearBasket();
+
+    boxTotal->hide();
+    baskIsEmpty->show();
+
+    sumCost = 0.00;
+
+    while (QLayoutItem* item = layCards->takeAt(0)) {
+        delete item->widget();
+        delete item;
+    }
+    cardsBox->setFixedHeight(scrollArea->height()-2);
 }
 
 void BasketWidget::SetNumOfDays(QString text)

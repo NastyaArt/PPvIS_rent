@@ -19,11 +19,7 @@ public:
 
 private:
 
-    QStringList prdArticles;
     QLabel *lblInfo;
-    int numOfDays;
-    double totalCost;
-    QDate date;
 
     void paintEvent(QPaintEvent *);
 

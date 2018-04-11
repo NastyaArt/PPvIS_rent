@@ -19,14 +19,11 @@ private:
 
     QList<Product*> database;
     Order *order;
-    void AddProduct(QString art, QString name, QString categ, bool avail, double cst);
-    void AddProduct(Product *prd);
-    void ClearDatabase();
-    void SortByAvailable();
-
     const QString filename=("xml/database.xml");
 
-
+    void AddProduct(QString art, QString name, QString categ, bool avail, double cst);
+    void ClearDatabase();
+    void SortByAvailable();
 
 signals:
     void SendProduct(Product *prd);

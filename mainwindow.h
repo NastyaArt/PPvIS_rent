@@ -16,8 +16,6 @@
 #include "statuswidget.h"
 #include "catalogwidget.h"
 
-
-
 namespace Ui {
 class MainWindow;
 }

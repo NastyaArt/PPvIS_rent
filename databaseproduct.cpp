@@ -11,11 +11,6 @@ void DatabaseProduct::AddProduct(QString art, QString name, QString categ, bool 
     database.append(prd);
 }
 
-void DatabaseProduct::AddProduct(Product *prd)
-{
-        database.append(prd);
-}
-
 void DatabaseProduct::ClearDatabase()
 {
         database.clear();

@@ -26,6 +26,7 @@ private:
     QGroupBox *cardsBox;
     const int cardsDist = 10;
     int boxHeight;
+
 signals:
 
 public slots:

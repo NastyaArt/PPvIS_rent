@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QScrollArea>
-#include <QScrollBar>
 #include <QGroupBox>
 #include <QStringList>
 #include <QLabel>
